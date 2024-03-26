@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('level');
 });
 
+Route::get('/', function () {
+    return view('show');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
