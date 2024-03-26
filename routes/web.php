@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('sign_up');
 });
 
+Route::get('/', function () {
+    return view('mode');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
