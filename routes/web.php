@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('sign_up');
+    return view('index');
 });
 
 Auth::routes();
