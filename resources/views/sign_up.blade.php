@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>新規登録</h1>
+    <h1>ログイン</h1>
+
+    <div>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </div>
+    
+    <button>登録</button>
 </body>
 </html>
