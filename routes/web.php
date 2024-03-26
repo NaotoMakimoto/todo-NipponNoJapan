@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('level');
-// });
+Route::get('/', function () {
+    return view('level');
+});
 
 Auth::routes();
 
