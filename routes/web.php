@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\IndexController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
+
+// Route::get('/index', [IndexController::class, 'index']);
 
 
