@@ -30,3 +30,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/index', [IndexController::class, 'index'])->name('index.index');
 
+Route::get('/index', [IndexController::class, 'index'])->name('index.index');
