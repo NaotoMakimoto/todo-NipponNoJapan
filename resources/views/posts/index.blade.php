@@ -7,7 +7,7 @@
     <title>todo</title>
 </head>
 <body>
-    <h2>Lv.5</h2>
+    <h2><a href="{{ route('level') }}">Lv.5</a></h2>
     <h1>毎日習慣化TODO</h1>
     <h2>並び替え</h2>
 

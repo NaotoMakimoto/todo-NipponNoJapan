@@ -19,5 +19,6 @@
             <li>スクワット  10回　10日間達成</li>
         </ul>
     </div>
+    <a href="{{ route('todo.index') }}">戻る</a>
 </body>
 </html>
