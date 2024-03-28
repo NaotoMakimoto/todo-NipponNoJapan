@@ -10,15 +10,15 @@
     <h2>Lv.5</h2>
     <h1>毎日習慣化TODO</h1>
     <h2>並び替え</h2>
-    <div>
-        <p>〇　スクワット10回</p>
-    </div>
-    <div>
-        <p>〇　スクワット10回</p>
-    </div>
-    <div>
-        <p>〇　スクワット10回</p>
-    </div>
+
+    @foreach($todos as $todo)
+        <a href="{{ route('todo.show', $todo->id) }}">
+            <div>
+                <p>〇　{{ $todo->title }}</p>
+            </div>
+        </a>
+    @endforeach
+    
     <button>＋</button>
 
 </body>
