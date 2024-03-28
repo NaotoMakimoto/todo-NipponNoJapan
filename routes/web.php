@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IndexController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +35,5 @@ Route::get('/index', [IndexController::class, 'index'])->name('index.index');
 // Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 // Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
+// Route::get('/register', [RegisterController::class, 'register'])->name('register');
+// Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
