@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>スクワット10回</h1>
+    <h1>{{ $todos->title }}</h1>
     <h1>20日継続！！</h1>
     <img src="" alt="">
     <p>戻る</p>

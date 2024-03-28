@@ -13,4 +13,10 @@ class TodoController extends Controller
         // dd($todos);
         return view('posts.index', ['todos'=>$todos]);
     }
+
+    function show($id)
+    {
+        $todos = Todo::find($id);
+        return view('posts.show', ['todos'=>$todos]);
+    }
 }

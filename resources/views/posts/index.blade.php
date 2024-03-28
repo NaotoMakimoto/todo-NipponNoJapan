@@ -12,11 +12,11 @@
     <h2>並び替え</h2>
 
     @foreach($todos as $todo)
-
-        <div>
-            <p>〇　{{ $todo->title }}</p>
-        </div>
-
+        <a href="{{ route('todo.show', $todo->id) }}">
+            <div>
+                <p>〇　{{ $todo->title }}</p>
+            </div>
+        </a>
     @endforeach
     
     <button>＋</button>
