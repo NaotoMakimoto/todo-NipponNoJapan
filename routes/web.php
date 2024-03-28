@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('level');
-});
-
-Route::get('/', function () {
-    return view('show');
+    return view('posts.welcome');
 });
 
 Auth::routes();
