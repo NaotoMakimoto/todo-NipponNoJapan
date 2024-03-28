@@ -20,6 +20,18 @@ Route::get('/', function () {
     return view('posts.welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/index', 'IndexController@index')->name('index');
+
+Route::get('/index', 'App\Http\Controllers\IndexController@index')->name('index');
+
+// Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('/register', 'Auth\RegisterController@register');
+
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
