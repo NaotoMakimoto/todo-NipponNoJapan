@@ -10,6 +10,6 @@
     <h1>{{ $todos->title }}</h1>
     <h1>20日継続！！</h1>
     <img src="" alt="">
-    <p>戻る</p>
+    <a href={{ url()->previous() }}>戻る</a>
 </body>
 </html>
