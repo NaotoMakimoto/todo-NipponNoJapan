@@ -25,7 +25,26 @@ class TodoController extends Controller
         $todos = Todo::find($id);
         return view('posts.show', ['todos'=>$todos]);
     } 
-    
+
+    function create()
+    {
+        return view('posts.create');
+    }
+
+    function store(Request $request)
+    {
+        $todos = new Todo;
+        $todos->title = $request -> title;
+        $todos->point = $request -> point; 
+        
+        // $todos -> use_id = Auth::id();
+
+        $todos -> save();
+
+        return redirect() -> route('todo.index');
+
+    }
+
     public function update(Request $request, $id)
     {
         $todo = Todo::find($id); // 対象のTodoを取得
