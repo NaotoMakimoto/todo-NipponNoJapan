@@ -23,11 +23,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script>
-        // タッチ開始位置とタッチ終了位置の定義
         let touchStartX = 0;
         let touchEndX = 0;
     
-        // 非表示項目の情報を保存するオブジェクト
         let hiddenTodos = {};
     
         function handleTouchStart(event) {
@@ -44,16 +42,15 @@
                 element.classList.add('swipe-out-right');
                 
                 element.addEventListener('animationend', function() {
-                    element.style.display = 'none'; // アニメーションが完了したら要素を非表示にする
-                    hiddenTodos[id] = true; // 非表示状態を保存
-                    localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // ローカルストレージに保存
-                    incrementPoint(id); // ポイントをインクリメントする関数を呼び出し
+                    element.style.display = 'none'; 
+                    hiddenTodos[id] = true; 
+                    localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); 
+                    incrementPoint(id); 
                 }, { once: true });
             }
         }
     
-        // 以前の incrementPoint 関数はそのままにします
-function incrementPoint(id) {
+        function incrementPoint(id) {
         // CSRFトークンの取得
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         
@@ -76,7 +73,7 @@ function incrementPoint(id) {
     }
         function revealTodosAtSpecificTime() {
             const revealTime = new Date();
-            revealTime.setHours(15, 16, 0, 0); // 次の表示時刻を午後3時に設定
+            revealTime.setHours(16, 0, 0, 0); // 次の表示時刻を午後3時に設定
     
             if (new Date() > revealTime) {
                 revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
