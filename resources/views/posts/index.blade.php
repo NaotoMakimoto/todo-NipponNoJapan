@@ -57,49 +57,82 @@
         }
     
         function incrementPoint(id) {
-        // CSRFトークンの取得
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        
-        // ポイントをインクリメントするためのfetchリクエスト
-        fetch('/todo/' + id, {
-            method: 'PUT',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 'point': 1 })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-        function revealTodosAtSpecificTime() {
-            const revealTime = new Date();
-            revealTime.setHours(17, 34, 0, 0); // 次の表示時刻を午後3時に設定
-    
-            if (new Date() > revealTime) {
-                revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
-            }
-    
-            const msUntilReveal = revealTime - new Date();
-    
-            setTimeout(() => {
-                document.querySelectorAll('.todo-item').forEach(item => {
-                    const id = item.getAttribute('id').split('-')[1];
-                    if (hiddenTodos[id]) {
-                        item.style.display = ''; // 元の表示スタイルに戻す
-                        item.style.opacity = ''; // 透明度をリセット
-                        item.classList.remove('swipe-out-right'); // アニメーションクラスを削除
-                        delete hiddenTodos[id]; // オブジェクトから削除
-                    }
-                });
-                localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
-            }, msUntilReveal);
+            // CSRFトークンの取得
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            // ポイントと連続値をインクリメントするためのfetchリクエスト
+            fetch('/todo/' + id, {
+                method: 'PUT',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Content-Type': 'application/json'
+                },
+                // continuousも1増やすためにbodyに含めます
+                body: JSON.stringify({ 'point': 1, 'continuous': 1 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
+        
+        function resetContinuous(id) {
+    // CSRFトークンの取得
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+    // 連続値をリセットするためのfetchリクエスト
+    fetch('/todo/reset/' + id, { // エンドポイントは適宜変更してください
+        method: 'PUT',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 'continuous': 0 })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+        function revealTodosAtSpecificTime() {
+    const revealTime = new Date();
+    revealTime.setHours(22, 12, 30, 0); // 次の表示時刻を設定
+
+    if (new Date() > revealTime) {
+        revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
+    }
+
+    const msUntilReveal = revealTime - new Date();
+
+    setTimeout(() => {
+        const todosToResetContinuous = [];
+        document.querySelectorAll('.todo-item').forEach(item => {
+            const id = item.getAttribute('id').split('-')[1];
+            if (hiddenTodos[id]) {
+                item.style.display = ''; // 元の表示スタイルに戻す
+                item.classList.remove('swipe-out-right'); // アニメーションクラスを削除
+                delete hiddenTodos[id]; // オブジェクトから削除
+            } else {
+                // 非表示になっていないTodoは、continuousをリセットするためのリストに追加
+                todosToResetContinuous.push(id);
+            }
+        });
+
+        // continuousの値をリセット
+        todosToResetContinuous.forEach(resetContinuous);
+
+        localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
+    }, msUntilReveal);
+}
+
     
         document.addEventListener('DOMContentLoaded', () => {
             hiddenTodos = JSON.parse(localStorage.getItem('hiddenTodos') || '{}');
