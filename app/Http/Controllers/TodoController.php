@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-
-    
     function level()
     {
         $todos = Todo::all();
