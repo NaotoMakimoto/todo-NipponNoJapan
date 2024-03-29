@@ -8,10 +8,22 @@
 </head>
 <body>
     <h1>モード選択</h1>
-    <h1>次のレベルまでXポイント</h1>
-    {{-- <img src="" alt=""> --}}
-    <p>画像挿入</p>
+    <h1>次のレベルまで{{ $points }}ポイント</h1>
     
+   
+    @if ($points >= 0 && $points < 50)
+        <img src="{{ asset('img/naoto.png') }}" alt="">
+    
+    
+    @elseif ($points >= 50 && $points < 100)
+        <img src="{{ asset('img/043.jpg') }}" alt="">
+    
+  
+    @else
+        <img src="{{ asset('img/044.jpg') }}" alt="">
+    @endif
+    
+
     @foreach($todos as $todo)
         <a href="{{ route('todo.show', $todo->id) }}">
             <div>
