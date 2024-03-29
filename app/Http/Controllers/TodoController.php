@@ -27,8 +27,7 @@ class TodoController extends Controller
         $todos = Todo::find($id);
         return view('posts.show', ['todos'=>$todos]);
     }
-
-
+    
     public function update(Request $request, $id)
     {
         $todo = Todo::find($id); // 対象のTodoを取得
@@ -37,5 +36,4 @@ class TodoController extends Controller
     
         return response()->json(['success' => 'ポイントが更新されました']);
     }
-
 }
