@@ -32,6 +32,11 @@ Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
+
+
+
+
+
 Route::get('/level', function () {
     return view('posts.level');
 })->name('level');
