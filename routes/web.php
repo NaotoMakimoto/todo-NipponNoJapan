@@ -50,3 +50,5 @@ Route::get('/index', function () {
 Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
 
 Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
+
+Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
