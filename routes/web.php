@@ -32,6 +32,6 @@ Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
-// Route::get('/index', [IndexController::class, 'index']);
+Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
 
 

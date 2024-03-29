@@ -1,0 +1,10 @@
+.swipe-out-right {
+    animation: swipeOutRight 0.5s forwards;
+}
+
+@keyframes swipeOutRight {
+    to {
+        transform: translateX(100%); /* 右へ完全に移動 */
+        display: none; /* 透明になる */
+    }
+}
