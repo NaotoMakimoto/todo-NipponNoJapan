@@ -9,8 +9,8 @@
 <body>
     <h1>モード選択</h1>
     <h1>次のレベルまでXポイント</h1>
-    {{-- <img src="" alt=""> --}}
-    <p>画像挿入</p>
+    <img src="{{ asset('img/naoto.png') }}" alt="">
+    
     
     @foreach($todos as $todo)
         <a href="{{ route('todo.show', $todo->id) }}">
