@@ -49,3 +49,5 @@ Route::get('/index', function () {
 // Route::get('/level', 'TodoController@level')->name('level');
 
 Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
+
+Route::get('/get-points', [TodoController::class, 'getPoints'])->name('get.points');

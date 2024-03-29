@@ -26,6 +26,12 @@ class TodoController extends Controller
         return view('posts.level', ['todos' => $todos]);
     }
 
-    
+    function getPoints()
+    {
+        // ここでポイントを取得するロジックを実装する
+        $points = Todo::sum('value'); // 仮の例：ポイントの合計を取得
+
+        return response()->json(['points' => $points]);
+    }
 
 }
