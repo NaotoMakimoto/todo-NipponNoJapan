@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+
+    
+    function level()
+    {
+        $todos = Todo::all();
+        return view('posts.level', ['todos' => $todos]);
+    }
+    
     function index()
     {
         $todos = Todo::all();
@@ -20,11 +28,6 @@ class TodoController extends Controller
         return view('posts.show', ['todos'=>$todos]);
     }
 
-    function level()
-    {
-        $todos = Todo::all();
-        return view('posts.level', ['todos' => $todos]);
-    }
 
     
 
