@@ -33,6 +33,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
-
-// 下記追記します0329
-Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
