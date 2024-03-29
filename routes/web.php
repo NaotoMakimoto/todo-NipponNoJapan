@@ -43,7 +43,9 @@ Route::get('/level', function () {
 // routes/web.php
 
 Route::get('/index', function () {
-    return view('todo.index');
+    return view('posts.index');
 })->name('index');
 
+// Route::get('/level', 'TodoController@level')->name('level');
 
+Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');

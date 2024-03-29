@@ -19,4 +19,13 @@ class TodoController extends Controller
         $todos = Todo::find($id);
         return view('posts.show', ['todos'=>$todos]);
     }
+
+    function level()
+    {
+        $todos = Todo::all();
+        return view('posts.level', ['todos' => $todos]);
+    }
+
+    
+
 }
