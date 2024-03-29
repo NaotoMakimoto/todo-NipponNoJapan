@@ -20,7 +20,12 @@
         </a>
     @endforeach
     
-    <button>＋</button>
+    <div>
+        <a href="{{ route('posts.crete') }}">
+            <button>新規タスク追加</button>
+        </a>
+    </div>
+
 
 </body>
 </html>

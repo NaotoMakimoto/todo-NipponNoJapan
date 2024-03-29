@@ -27,13 +27,15 @@
                     <label>タイトル</label>
                     <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title">
                 </div>
-                {{-- <div class="form-group">
-                    <label>内容</label>
-                    <textarea class="form-control" placeholder="内容" rows="5" name="body">
-                    </textarea>
-                </div> --}}
-                <button type="submit" class="btn btn-primary">作成</button>
+                <button type="submit" class="btn btn-primary">追加</button>
             </form>
+
+            <div>
+              <a href="{{ route('todo.index') }}">
+                <button type="submit" class="btn btn-primary">追加せずに戻る</button>
+              </a>
+            </div>
+
         </div>
     </div>
   </div>
