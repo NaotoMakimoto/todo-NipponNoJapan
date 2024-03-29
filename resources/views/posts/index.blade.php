@@ -57,29 +57,32 @@
         }
     
         function incrementPoint(id) {
-        // CSRFトークンの取得
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            // CSRFトークンの取得
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            // ポイントと連続値をインクリメントするためのfetchリクエスト
+            fetch('/todo/' + id, {
+                method: 'PUT',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Content-Type': 'application/json'
+                },
+                // continuousも1増やすためにbodyに含めます
+                body: JSON.stringify({ 'point': 1, 'continuous': 1 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
         
-        // ポイントをインクリメントするためのfetchリクエスト
-        fetch('/todo/' + id, {
-            method: 'PUT',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 'point': 1 })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
+
         function revealTodosAtSpecificTime() {
             const revealTime = new Date();
-            revealTime.setHours(17, 34, 0, 0); // 次の表示時刻を午後3時に設定
+            revealTime.setHours(18, 5, 0, 0); // 次の表示時刻を午後3時に設定
     
             if (new Date() > revealTime) {
                 revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
