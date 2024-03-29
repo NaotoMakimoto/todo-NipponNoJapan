@@ -1,10 +1,10 @@
 .swipe-out-right {
-    animation: swipeOutRight 0.5s forwards;
+    animation: swipeOutRight 0.5s forwards; /* アニメーションを適用 */
 }
 
 @keyframes swipeOutRight {
     to {
-        transform: translateX(100%); /* 右へ完全に移動 */
-        display: none; /* 透明になる */
+        opacity: 0; /* 完全に透明になる */
+        transform: translateX(100%); /* 右に移動 */
     }
 }

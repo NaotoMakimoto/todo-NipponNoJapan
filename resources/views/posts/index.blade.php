@@ -23,11 +23,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script>
-        // タッチ開始位置
+        // タッチ開始位置とタッチ終了位置の定義
         let touchStartX = 0;
-        // タッチ終了位置
         let touchEndX = 0;
-
+    
         function handleTouchStart(event) {
             touchStartX = event.changedTouches[0].screenX;
         }
@@ -37,37 +36,45 @@
         }
 
         function handleTouchEnd(event, id) {
-            // スワイプの検出（左から右へのスワイプを検出）
-            if (touchEndX > touchStartX) {
-                // アニメーションを追加する要素を取得
-                var element = document.getElementById("todo-" + id);
-                // アニメーションを適用
-                element.classList.add('swipe-out-right');
-                // アニメーションが終わった後にポイントをインクリメントする
-                element.addEventListener('animationend', function() {
-                    incrementPoint(id);
-                }, { once: true });
-            }
-        }
+    if (touchEndX > touchStartX) {
+        var element = document.getElementById("todo-" + id);
+        element.classList.add('swipe-out-right');
+        
+        element.addEventListener('animationend', function() {
+            element.style.display = 'none'; // アニメーションが完了したら要素を非表示にする
 
-        // CSRFトークンの取得
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            // 3秒後に再表示する
+            setTimeout(() => {
+                element.style.display = ''; // 元の表示スタイルに戻す
+                element.style.opacity = ''; // 透明度をリセット
+                element.classList.remove('swipe-out-right'); // アニメーションクラスを削除
+            }, 3000);
+
+            incrementPoint(id); // ポイントをインクリメントする関数を呼び出し
+        }, { once: true });
+    }
+}
+
 
         function incrementPoint(id) {
+            // CSRFトークンの取得
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            // ポイントをインクリメントするためのfetchリクエスト
             fetch('/todo/' + id, {
-                method: 'PUT', // PUTメソッドを使用する
+                method: 'PUT',
                 headers: {
-                    'X-CSRF-TOKEN': csrfToken, // CSRFトークンをヘッダーに含める
+                    'X-CSRF-TOKEN': csrfToken,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 'point': 1 }) // pointをインクリメント
+                body: JSON.stringify({ 'point': 1 })
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data); // レスポンスの成功をコンソールに表示
+                console.log('Success:', data);
             })
             .catch((error) => {
-                console.error('Error:', error); // エラーをコンソールに表示
+                console.error('Error:', error);
             });
         }
     </script>
