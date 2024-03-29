@@ -26,6 +26,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
@@ -48,4 +51,3 @@ Route::get('/index', function () {
 
 // Route::get('/level', 'TodoController@level')->name('level');
 
-Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
