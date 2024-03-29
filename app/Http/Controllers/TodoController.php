@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
+
 class TodoController extends Controller
 {
     function index()
     {
         $todos = Todo::all();
         // dd($todos);
+    
         return view('posts.index', ['todos'=>$todos]);
     }
 
@@ -26,12 +28,17 @@ class TodoController extends Controller
         return view('posts.level', ['todos' => $todos]);
     }
 
-    function getPoints()
+    public function showLevel()
     {
-        // ここでポイントを取得するロジックを実装する
-        $points = Todo::sum('value'); // 仮の例：ポイントの合計を取得
-
-        return response()->json(['points' => $points]);
+        // ポイントを取得するための適切なロジックを実装する
+        $points = 0; // 仮のポイント数。実際のデータベースからポイントを取得するロジックをここに追加する
+        
+        // Todo モデルからデータを取得する例
+        $todos = Todo::all(); // 仮の取得方法。適切なロジックに置き換える
+        
+        // ビューを返す
+        return view('posts.level', compact('todos', 'points'));
     }
+    
 
 }
