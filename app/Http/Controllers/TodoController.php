@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 
 class TodoController extends Controller
 {
@@ -28,17 +28,16 @@ class TodoController extends Controller
         return view('posts.level', ['todos' => $todos]);
     }
 
-    public function showLevel()
+    function showLevel()
     {
-        // ポイントを取得するための適切なロジックを実装する
-        $points = 0; // 仮のポイント数。実際のデータベースからポイントを取得するロジックをここに追加する
-        
-        // Todo モデルからデータを取得する例
-        $todos = Todo::all(); // 仮の取得方法。適切なロジックに置き換える
-        
+         // Todoモデルからポイントを取得する
+    $todos = Todo::all(); // 仮の取得方法です。適切な方法に変更してください。
+    $points = $todos->sum('points'); // Todoモデルのポイント属性に応じて変更してください。
+
+    
         // ビューを返す
         return view('posts.level', compact('todos', 'points'));
     }
-    
 
+    
 }

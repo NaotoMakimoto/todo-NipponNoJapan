@@ -48,6 +48,6 @@ Route::get('/index', function () {
 
 // Route::get('/level', 'TodoController@level')->name('level');
 
-Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
+Route::get('/level', [TodoController::class, 'showLevel'])->name('level');
 
 // Route::get('/level', [TodoController::class, 'showLevel'])->name('level.show');
