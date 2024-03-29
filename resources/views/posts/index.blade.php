@@ -27,56 +27,94 @@
         let touchStartX = 0;
         let touchEndX = 0;
     
+        // 非表示項目の情報を保存するオブジェクト
+        let hiddenTodos = {};
+    
         function handleTouchStart(event) {
             touchStartX = event.changedTouches[0].screenX;
         }
-
+    
         function handleTouchMove(event) {
             touchEndX = event.changedTouches[0].screenX;
         }
-
+    
         function handleTouchEnd(event, id) {
-    if (touchEndX > touchStartX) {
-        var element = document.getElementById("todo-" + id);
-        element.classList.add('swipe-out-right');
-        
-        element.addEventListener('animationend', function() {
-            element.style.display = 'none'; // アニメーションが完了したら要素を非表示にする
-
-            // 3秒後に再表示する
-            setTimeout(() => {
-                element.style.display = ''; // 元の表示スタイルに戻す
-                element.style.opacity = ''; // 透明度をリセット
-                element.classList.remove('swipe-out-right'); // アニメーションクラスを削除
-            }, 3000);
-
-            incrementPoint(id); // ポイントをインクリメントする関数を呼び出し
-        }, { once: true });
-    }
-}
-
-
-        function incrementPoint(id) {
-            // CSRFトークンの取得
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            
-            // ポイントをインクリメントするためのfetchリクエスト
-            fetch('/todo/' + id, {
-                method: 'PUT',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'point': 1 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            if (touchEndX > touchStartX) {
+                var element = document.getElementById("todo-" + id);
+                element.classList.add('swipe-out-right');
+                
+                element.addEventListener('animationend', function() {
+                    element.style.display = 'none'; // アニメーションが完了したら要素を非表示にする
+                    hiddenTodos[id] = true; // 非表示状態を保存
+                    localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // ローカルストレージに保存
+                    incrementPoint(id); // ポイントをインクリメントする関数を呼び出し
+                }, { once: true });
+            }
         }
+    
+        // 以前の incrementPoint 関数はそのままにします
+function incrementPoint(id) {
+        // CSRFトークンの取得
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        
+        // ポイントをインクリメントするためのfetchリクエスト
+        fetch('/todo/' + id, {
+            method: 'PUT',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'point': 1 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+        function revealTodosAtSpecificTime() {
+            const revealTime = new Date();
+            revealTime.setHours(15, 16, 0, 0); // 次の表示時刻を午後3時に設定
+    
+            if (new Date() > revealTime) {
+                revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
+            }
+    
+            const msUntilReveal = revealTime - new Date();
+    
+            setTimeout(() => {
+                document.querySelectorAll('.todo-item').forEach(item => {
+                    const id = item.getAttribute('id').split('-')[1];
+                    if (hiddenTodos[id]) {
+                        item.style.display = ''; // 元の表示スタイルに戻す
+                        item.style.opacity = ''; // 透明度をリセット
+                        item.classList.remove('swipe-out-right'); // アニメーションクラスを削除
+                        delete hiddenTodos[id]; // オブジェクトから削除
+                    }
+                });
+                localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
+            }, msUntilReveal);
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            hiddenTodos = JSON.parse(localStorage.getItem('hiddenTodos') || '{}');
+            revealTodosAtSpecificTime();
+            
+            // ページ読み込み時に非表示状態を復元
+            document.querySelectorAll('.todo-item').forEach(item => {
+                const id = item.getAttribute('id').split('-')[1];
+                if (hiddenTodos[id]) {
+                    item.style.display = 'none'; // 非表示にする
+                }
+            });
+        });
     </script>
+    
+    
 </body>
 </html>
+
+
+
