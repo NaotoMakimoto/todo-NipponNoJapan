@@ -29,7 +29,7 @@ class TodoController extends Controller
     }
 
 
-     public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $todo = Todo::find($id); // 対象のTodoを取得
         $todo->point++; // pointをインクリメント
