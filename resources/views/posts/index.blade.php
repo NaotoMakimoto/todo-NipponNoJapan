@@ -20,6 +20,12 @@
      </div>
     @endforeach
 
+    <div>
+        <a href="{{ route('posts.crete') }}">
+            <button>新規タスク追加</button>
+        </a>
+    </div>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script>
@@ -73,7 +79,7 @@
     }
         function revealTodosAtSpecificTime() {
             const revealTime = new Date();
-            revealTime.setHours(16, 54, 0, 0); // 次の表示時刻を午後3時に設定
+            revealTime.setHours(17, 34, 0, 0); // 次の表示時刻を午後3時に設定
     
             if (new Date() > revealTime) {
                 revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
