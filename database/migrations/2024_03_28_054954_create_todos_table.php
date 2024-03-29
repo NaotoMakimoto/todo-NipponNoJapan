@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->unique();
+            $table->string('title')->nullable(false);
+            // $table->text('title')->unique();
             $table->integer('point');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
@@ -26,5 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('todos');
+            // $table->text('title')->nullable()->change();
+
     }
 };
