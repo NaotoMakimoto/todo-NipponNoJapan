@@ -34,4 +34,18 @@ Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
 Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
 
+// routes/web.php
 
+Route::get('/level', function () {
+    return view('posts.level');
+})->name('level');
+
+// routes/web.php
+
+Route::get('/index', function () {
+    return view('posts.index');
+})->name('index');
+
+// Route::get('/level', 'TodoController@level')->name('level');
+
+Route::get('/level', 'App\Http\Controllers\TodoController@level')->name('level');
