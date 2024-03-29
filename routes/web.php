@@ -28,9 +28,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
+
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
-Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
+
 
 // Route::get('/index', [IndexController::class, 'index']);
 

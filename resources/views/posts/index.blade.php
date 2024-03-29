@@ -12,7 +12,8 @@
     <h2>並び替え</h2>
 
     @foreach($todos as $todo)
-        <a href="{{ route('todo.show', $todo->id) }}">
+{{-- 下記遷移先には飛ばさないのでコメントアウトです --}}
+        {{-- <a href="{{ route('todo.show', $todo->id) }}"> --}}
             <div>
                 <p>〇　{{ $todo->title }}</p>
             </div>
