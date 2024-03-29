@@ -28,6 +28,4 @@ class TodoController extends Controller
     
         return response()->json(['success' => 'ポイントが更新されました']);
     }
-    
-    
 }
