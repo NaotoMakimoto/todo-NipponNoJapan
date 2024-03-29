@@ -32,22 +32,13 @@ Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
-// Route::get('/index', [IndexController::class, 'index']);
-
-// routes/web.php
-
 Route::get('/level', function () {
     return view('posts.level');
 })->name('level');
-
-// routes/web.php
 
 Route::get('/index', function () {
     return view('posts.index');
 })->name('index');
 
-// Route::get('/level', 'TodoController@level')->name('level');
 
 Route::get('/level', [TodoController::class, 'showLevel'])->name('level');
-
-// Route::get('/level', [TodoController::class, 'showLevel'])->name('level.show');
