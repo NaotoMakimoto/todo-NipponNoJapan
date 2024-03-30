@@ -22,8 +22,7 @@
     @foreach($todos as $todo)
     <a href="{{ route('todo.show', $todo->id) }}">
         <div>
-            <p>〇　{{ $todo->title }}</p>
-            <p>連続日数: {{ $todo->continuous }}</p>
+            <p>〇　{{ $todo->title }}  {{ $todo->continuous }}日継続</p>
         </div>
     </a>
 @endforeach
