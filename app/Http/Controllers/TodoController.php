@@ -22,7 +22,7 @@ class TodoController extends Controller
     {
         $todos = Todo::find($id);
         return view('posts.show', ['todos'=>$todos]);
-   }
+    }
 
     function level()
     {
@@ -84,6 +84,13 @@ class TodoController extends Controller
             return response()->json(['error' => 'Todoが見つかりません。'], 404);
         }
 
+    }
+
+
+    function showPage()
+    {
+        // show.blade.phpに必要なデータを取得する処理を記述
+        return view('posts.show', $data); // 必要なデータを渡してshow.blade.phpを表示
     }
 
 }

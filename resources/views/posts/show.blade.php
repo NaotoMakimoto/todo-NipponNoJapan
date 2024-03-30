@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ $todos->title }}</h1>
-    <h1>20日継続！！</h1>
+    {{-- <h1>{{ $todos->title }}</h1> --}}
+    {{-- <h1>20日継続！！</h1> --}}
+    <h1>ボーナスポイントにチャレンジ！<br>写真を投稿しよう！</h1>
     <img src="" alt="">
     <a href={{ url()->previous() }}>戻る</a>
 </body>

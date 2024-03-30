@@ -52,3 +52,8 @@ Route::get('/level', [TodoController::class, 'showLevel'])->name('level');
 Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
 
 Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
+
+
+Route::get('/show', function () {
+    return view('posts.show');
+})->name('show');
