@@ -54,7 +54,7 @@ class TodoController extends Controller
         $todos->title = $request -> title;
         $todos->point = $request -> point; 
         
-        // $todos -> use_id = Auth::id();
+        $todos -> user_id = Auth::id();
 
         $todos -> save();
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BonuspointsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +54,15 @@ Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update')
 
 Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
 
+Route::get('/show', [BonuspointsController::class, 'show'])->name('show');
 
-Route::get('/show', function () {
-    return view('posts.show');
-})->name('show');
+Route::post('/show', [BonuspointsController::class, 'store'])->name('post.show');
+
+
+// Route::get('/show', function () {
+//     return view('posts.show');
+// })->name('show');
+
+
+//bonus points
+// Route::get('/bonus', [BonuspointsController::class, 'showLevel'])->name('level');

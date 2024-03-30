@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->unique();
-            $table->integer('point')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->string('image')->nullable(); 
+            $table->integer('points')->default(0); 
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists('bonuses');
     }
 };
