@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
 
 class TodoController extends Controller
 {
@@ -39,6 +41,7 @@ class TodoController extends Controller
         return view('posts.level', compact('todos', 'points'));
 
     } 
+
 
     function create()
     {
@@ -83,5 +86,4 @@ class TodoController extends Controller
 
     }
 
-    
 }

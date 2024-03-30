@@ -30,10 +30,16 @@ Route::post('/posts', [TodoController::class, 'store'])->name('post.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
-
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
+Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
+
+// 下記追記します0329
+Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
+
+Route::get('/level', function () {
+    return view('posts.level');
+})->name('level');
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
@@ -53,3 +59,4 @@ Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update')
 
 Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
 
+Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
