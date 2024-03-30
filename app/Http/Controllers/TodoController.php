@@ -32,17 +32,20 @@ class TodoController extends Controller
 
     function showLevel()
     {
-         // Todoモデルからポイントを取得する
-    $todos = Todo::all(); // 仮の取得方法です。適切な方法に変更してください。
-    $points = $todos->sum('points'); // Todoモデルのポイント属性に応じて変更してください。
+         
+    // $todos = Todo::all(); 
+    // $points = $todos->sum('points'); 
 
-        return view('posts.level', compact('todos', 'points'));
+    //  return view('posts.level', compact('todos', 'points'));
 
+
+    $points = Todo::sum('point'); // Todoモデルのポイント属性に応じて変更してください。
+
+    
+    // ビューを返す
+    return view('posts.level', compact('points'));
     } 
 
-
-
-    //編集画面のコントローラー
     function create()
     {
         $todos = Todo::all();
