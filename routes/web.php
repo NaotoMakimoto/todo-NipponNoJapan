@@ -34,14 +34,12 @@ Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
-// 下記追記します0329
 Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
 
 Route::get('/level', function () {
     return view('posts.level');
 })->name('level');
 
-Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
 
 Route::get('/index', function () {
     return view('posts.index');
