@@ -86,7 +86,7 @@
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     
     // 連続値をリセットするためのfetchリクエスト
-    fetch('/todo/reset/' + id, { // エンドポイントは適宜変更してください
+    fetch('/todo/reset/' + id, { 
         method: 'PUT',
         headers: {
             'X-CSRF-TOKEN': csrfToken,
