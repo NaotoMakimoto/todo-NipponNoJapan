@@ -5,19 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  {{-- <header>
-    <div class="header-left">
-            <img class="logo" src="./logo.png" alt="">
-        </div>
-        <div class="header-right">
-            <ul class="nav">
-                <li><a href="#">ユーザA</a></li>
-            </ul>
-        </div>
-  </header> --}}
   <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -36,6 +25,24 @@
               </a>
             </div>
 
+        </div>
+    </div>
+
+
+    <div>
+      
+        <div>
+         
+            @foreach($todos as $todo)
+              <form action="{{ route('posts.destroy', $todo->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                  <input type="checkbox" name="selected_items[]" value="{{ $todo->id }}">
+                  <label>{{ $todo->title }}</label><br>  
+            @endforeach
+                <button type="submit">選択した項目を削除</button>
+              </form>
+         
         </div>
     </div>
   </div>

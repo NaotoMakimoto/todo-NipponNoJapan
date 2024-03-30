@@ -44,16 +44,12 @@ class TodoController extends Controller
     
     // ビューを返す
     return view('posts.level', compact('points'));
-
-
     } 
-
-
-    
 
     function create()
     {
-        return view('posts.create');
+        $todos = Todo::all();
+        return view('posts.create', ['todos'=>$todos]);
     }
 
     function store(Request $request)
@@ -69,6 +65,18 @@ class TodoController extends Controller
         return redirect() -> route('todo.index');
 
     }
+
+    function destroy(Request $request)
+    {
+        $selectedIds = $request->input('selected_items', []);
+        Todo::whereIn('id', $selectedIds)->delete();
+
+        return redirect() -> route('todo.index');
+    }
+
+
+
+
 
     public function update(Request $request, $id)
     {
