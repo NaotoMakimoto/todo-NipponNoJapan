@@ -41,13 +41,7 @@ Route::get('/level', function () {
     return view('posts.level');
 })->name('level');
 
-Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
-
 Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
-
-Route::get('/level', function () {
-    return view('posts.level');
-})->name('level');
 
 Route::get('/index', function () {
     return view('posts.index');
@@ -58,5 +52,3 @@ Route::get('/level', [TodoController::class, 'showLevel'])->name('level');
 Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');
 
 Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
-
-Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update');

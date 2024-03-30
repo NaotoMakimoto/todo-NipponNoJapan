@@ -104,36 +104,35 @@
 }
 
         function revealTodosAtSpecificTime() {
-    const revealTime = new Date();
-    revealTime.setHours(8, 59, 30, 0); // 次の表示時刻を設定
+            const revealTime = new Date();
+            revealTime.setHours(9, 41, 30, 0); // 次の表示時刻を設定
 
-    if (new Date() > revealTime) {
-        revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
-    }
-
-    const msUntilReveal = revealTime - new Date();
-
-    setTimeout(() => {
-        const todosToResetContinuous = [];
-        document.querySelectorAll('.todo-item').forEach(item => {
-            const id = item.getAttribute('id').split('-')[1];
-            if (hiddenTodos[id]) {
-                item.style.display = ''; // 元の表示スタイルに戻す
-                item.classList.remove('swipe-out-right'); // アニメーションクラスを削除
-                delete hiddenTodos[id]; // オブジェクトから削除
-            } else {
-                // 非表示になっていないTodoは、continuousをリセットするためのリストに追加
-                todosToResetContinuous.push(id);
+            if (new Date() > revealTime) {
+                revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
             }
-        });
 
-        // continuousの値をリセット
-        todosToResetContinuous.forEach(resetContinuous);
+            const msUntilReveal = revealTime - new Date();
 
-        localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
-    }, msUntilReveal);
-}
+            setTimeout(() => {
+                const todosToResetContinuous = [];
+                document.querySelectorAll('.todo-item').forEach(item => {
+                    const id = item.getAttribute('id').split('-')[1];
+                    if (hiddenTodos[id]) {
+                        item.style.display = ''; // 元の表示スタイルに戻す
+                        item.classList.remove('swipe-out-right'); // アニメーションクラスを削除
+                        delete hiddenTodos[id]; // オブジェクトから削除
+                    } else {
+                        // 非表示になっていないTodoは、continuousをリセットするためのリストに追加
+                        todosToResetContinuous.push(id);
+                    }
+                });
 
+                // continuousの値をリセット
+                todosToResetContinuous.forEach(resetContinuous);
+
+                localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
+            }, msUntilReveal);
+        }
     
         document.addEventListener('DOMContentLoaded', () => {
             hiddenTodos = JSON.parse(localStorage.getItem('hiddenTodos') || '{}');
@@ -148,7 +147,6 @@
             });
         });
     </script>
-    
     
 </body>
 </html>
