@@ -12,12 +12,14 @@
     <h1>毎日習慣化TODO</h1>
     <h2>並び替え</h2>
     @foreach($todos as $todo)
+
      <div id="todo-{{ $todo->id }}" class="todo-item"
         ontouchstart="handleTouchStart(event)"
         ontouchmove="handleTouchMove(event)"
         ontouchend="handleTouchEnd(event, {{ $todo->id }})">
         <p>{{ $todo->title }}</p>
      </div>
+
     @endforeach
 
     <div>
@@ -100,7 +102,6 @@
         console.error('Error:', error);
     });
 }
-
 
         function revealTodosAtSpecificTime() {
     const revealTime = new Date();
