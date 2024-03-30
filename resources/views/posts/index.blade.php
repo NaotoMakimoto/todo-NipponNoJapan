@@ -105,7 +105,10 @@
 
         function revealTodosAtSpecificTime() {
             const revealTime = new Date();
-            revealTime.setHours(9, 41, 30, 0); // 次の表示時刻を設定
+
+            console.log(revealTime);
+            revealTime.setHours(19, 8, 0, 0); // 次の表示時刻を設定
+            console.log(revealTime);
 
             if (new Date() > revealTime) {
                 revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定
