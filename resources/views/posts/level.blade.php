@@ -20,12 +20,13 @@
     @endif
 
     @foreach($todos as $todo)
-        <a href="{{ route('todo.show', $todo->id) }}">
-            <div>
-                <p>〇　{{ $todo->title }}</p>
-            </div>
-        </a>
-    @endforeach
+    <a href="{{ route('todo.show', $todo->id) }}">
+        <div>
+            <p>〇　{{ $todo->title }}</p>
+            <p>連続日数: {{ $todo->continuous }}</p>
+        </div>
+    </a>
+@endforeach
     <a href="{{ route('todo.index') }}">戻る</a>
 </body>
 </html>
