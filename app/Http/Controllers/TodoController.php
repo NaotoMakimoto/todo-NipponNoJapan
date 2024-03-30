@@ -36,16 +36,17 @@ class TodoController extends Controller
     $todos = Todo::all(); // 仮の取得方法です。適切な方法に変更してください。
     $points = $todos->sum('points'); // Todoモデルのポイント属性に応じて変更してください。
 
-    
-        // ビューを返す
         return view('posts.level', compact('todos', 'points'));
 
     } 
 
 
+
+    //編集画面のコントローラー
     function create()
     {
-        return view('posts.create');
+        $todos = Todo::all();
+        return view('posts.create', ['todos'=>$todos]);
     }
 
     function store(Request $request)
@@ -61,6 +62,18 @@ class TodoController extends Controller
         return redirect() -> route('todo.index');
 
     }
+
+    function destroy(Request $request)
+    {
+        $selectedIds = $request->input('selected_items', []);
+        Todo::whereIn('id', $selectedIds)->delete();
+
+        return redirect() -> route('todo.index');
+    }
+
+
+
+
 
     public function update(Request $request, $id)
     {
