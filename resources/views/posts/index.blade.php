@@ -24,7 +24,7 @@
 
     <div>
         <a href="{{ route('posts.create') }}">
-            <button>新規タスク追加</button>
+            <button>タスク編集</button>
         </a>
     </div>
 

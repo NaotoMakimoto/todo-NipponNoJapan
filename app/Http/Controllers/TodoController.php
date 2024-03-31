@@ -67,10 +67,6 @@ class TodoController extends Controller
         return redirect() -> route('todo.index');
     }
 
-
-
-
-
     public function update(Request $request, $id)
     {
         $todo = Todo::find($id); // 対象のTodoを取得
@@ -92,8 +88,5 @@ class TodoController extends Controller
         } else {
             return response()->json(['error' => 'Todoが見つかりません。'], 404);
         }
-
     }
-
-    
 }
