@@ -19,6 +19,13 @@
         <img src="{{ asset('img/044.jpg') }}" alt="">
     @endif
 
+    @foreach($todos as $todo)
+    <a href="{{ route('todo.show', $todo->id) }}">
+        <div>
+            <p>〇　{{ $todo->title }}  {{ $todo->continuous }}日継続</p>
+        </div>
+    </a>
+@endforeach
     <a href="{{ route('todo.index') }}">戻る</a>
 </body>
 </html>
