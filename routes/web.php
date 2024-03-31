@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BonuspointsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,9 @@ Route::put('/todo/{id}', [TodoController::class, 'update'])->name('todo.update')
 
 Route::put('/todo/reset/{id}', [TodoController::class, 'reset'])->name('todo.reset');
 
+Route::get('/show', [BonuspointsController::class, 'show'])->name('show');
 
+Route::post('/show', [BonuspointsController::class, 'store'])->name('post.show');
 
 //編集画面のルート
 Route::post('/posts', [TodoController::class, 'store'])->name('post.store');
@@ -55,3 +58,4 @@ Route::post('/posts', [TodoController::class, 'store'])->name('post.store');
 Route::get('/posts', [TodoController::class, 'create'])->name('posts.create');
 
 Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.destroy');
+

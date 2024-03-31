@@ -7,9 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ $todos->title }}</h1>
-    <h1>20日継続！！</h1>
-    <img src="" alt="">
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
+@endif
+    {{-- <h1>{{ $todos->title }}</h1> --}}
+    {{-- <h1>20日継続！！</h1> --}}
+    <h1>ボーナスポイントにチャレンジ！<br>写真を投稿しよう！</h1>
+    {{-- <p>{{   }}</p> --}}
+    <form action="" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="image">
+        <button type="submit">アップロード</button>
+    </form>
+
+    <div>
+        @foreach($bonuses as $bonus)
+        <img src="{{ asset('storage/img/' . $bonus->image) }}" alt="">
+    @endforeach
+  
+
+    
+    
+    </div>
     <a href={{ url()->previous() }}>戻る</a>
 </body>
 </html>
