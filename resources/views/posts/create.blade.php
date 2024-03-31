@@ -8,6 +8,13 @@
 </head>
 <body>
   <div class="container mt-5">
+    <div>
+      <h1>タスク編集</h1>
+      <a href="{{ route('todo.index') }}">
+        <button type="submit" class="btn btn-primary">戻る</button>
+      </a>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form action="{{ route('post.store') }}" method="POST">
@@ -18,13 +25,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">追加</button>
             </form>
-
-            <div>
-              <a href="{{ route('todo.index') }}">
-                <button type="submit" class="btn btn-primary">追加せずに戻る</button>
-              </a>
-            </div>
-
         </div>
     </div>
 
