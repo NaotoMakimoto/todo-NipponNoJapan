@@ -33,13 +33,20 @@
         <div class="progress">{{ $points }}%</div>
     </div>
    
-    @if ($points >= 0 && $points < 50)
+    @if ($points >= 0 && $points < 25)
         <img src="{{ asset('img/naoto.png') }}" alt="">
-    @elseif ($points >= 50 && $points < 100)
-        <img src="{{ asset('img/043.jpg') }}" alt="">
+    @elseif ($points >= 25 && $points < 50)
+        <img src="{{ asset('img/hiroto.png') }}" alt="">
+    @elseif ($points >= 50 && $points < 75)
+        <img src="{{ asset('img/taishi.png') }}" alt="">
+    @elseif ($points >= 75 && $points < 100)
+        <img src="{{ asset('img/miura.png') }}" alt="">
+    @elseif ($points >= 100 && $points < 125)
+        <img src="{{ asset('img/danno.png') }}" alt="">
     @else
-        <img src="{{ asset('img/044.jpg') }}" alt="">
+        <img src="{{ asset('img/endo.png') }}" alt="">
     @endif
+
 
     @foreach($todos as $todo)
     <a href="{{ route('todo.show', $todo->id) }}">
