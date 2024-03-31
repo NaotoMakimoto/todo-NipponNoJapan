@@ -24,8 +24,8 @@
     @endforeach
 
     <div>
-        <a href="{{ route('posts.crete') }}">
-            <button>新規タスク追加</button>
+        <a href="{{ route('posts.create') }}">
+            <button>タスク編集</button>
         </a>
     </div>
 
@@ -87,7 +87,7 @@
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     
     // 連続値をリセットするためのfetchリクエスト
-    fetch('/todo/reset/' + id, { // エンドポイントは適宜変更してください
+    fetch('/todo/reset/' + id, { 
         method: 'PUT',
         headers: {
             'X-CSRF-TOKEN': csrfToken,
@@ -106,7 +106,10 @@
 
         function revealTodosAtSpecificTime() {
             const revealTime = new Date();
-            revealTime.setHours(9, 41, 30, 0); // 次の表示時刻を設定
+
+            console.log(revealTime);
+            revealTime.setHours(21, 14, 0, 0); // 次の表示時刻を設定
+            console.log(revealTime);
 
             if (new Date() > revealTime) {
                 revealTime.setDate(revealTime.getDate() + 1); // 現在が指定時刻を過ぎていたら翌日に設定

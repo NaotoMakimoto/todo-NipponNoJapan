@@ -27,22 +27,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/posts', [TodoController::class, 'store'])->name('post.store');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/todo/{id}', [TodoController::class, 'show'])->name('todo.show');
 
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 
-// 下記追記します0329
-Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
-
 Route::get('/level', function () {
     return view('posts.level');
 })->name('level');
 
-Route::get('/posts/create', [TodoController::class, 'create'])->name('posts.crete');
 
 Route::get('/index', function () {
     return view('posts.index');
@@ -58,11 +52,10 @@ Route::get('/show', [BonuspointsController::class, 'show'])->name('show');
 
 Route::post('/show', [BonuspointsController::class, 'store'])->name('post.show');
 
+//編集画面のルート
+Route::post('/posts', [TodoController::class, 'store'])->name('post.store');
 
-// Route::get('/show', function () {
-//     return view('posts.show');
-// })->name('show');
+Route::get('/posts', [TodoController::class, 'create'])->name('posts.create');
 
+Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.destroy');
 
-//bonus points
-// Route::get('/bonus', [BonuspointsController::class, 'showLevel'])->name('level');

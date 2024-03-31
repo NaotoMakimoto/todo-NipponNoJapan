@@ -32,20 +32,17 @@ class TodoController extends Controller
 
     function showLevel()
     {
-         // Todoモデルからポイントを取得する
-    $todos = Todo::all(); // 仮の取得方法です。適切な方法に変更してください。
-    $points = $todos->sum('points'); // Todoモデルのポイント属性に応じて変更してください。
-
+    $todos = Todo::all(); 
+    // $points = $todos->sum('points'); 
+    $points = Todo::sum('point'); 
     
-        // ビューを返す
-        return view('posts.level', compact('todos', 'points'));
-
+    return view('posts.level', compact('todos', 'points'));
     } 
-
 
     function create()
     {
-        return view('posts.create');
+        $todos = Todo::all();
+        return view('posts.create', ['todos'=>$todos]);
     }
 
     function store(Request $request)
@@ -60,6 +57,14 @@ class TodoController extends Controller
 
         return redirect() -> route('todo.index');
 
+    }
+
+    function destroy(Request $request)
+    {
+        $selectedIds = $request->input('selected_items', []);
+        Todo::whereIn('id', $selectedIds)->delete();
+
+        return redirect() -> route('todo.index');
     }
 
     public function update(Request $request, $id)
@@ -83,9 +88,7 @@ class TodoController extends Controller
         } else {
             return response()->json(['error' => 'Todoが見つかりません。'], 404);
         }
-
     }
-
 
     function showPage()
     {
