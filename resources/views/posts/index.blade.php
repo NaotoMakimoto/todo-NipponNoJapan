@@ -107,7 +107,7 @@
             const revealTime = new Date();
 
             console.log(revealTime);
-            revealTime.setHours(19, 8, 0, 0); // 次の表示時刻を設定
+            revealTime.setHours(10, 50, 0, 0); // 次の表示時刻を設定
             console.log(revealTime);
 
             if (new Date() > revealTime) {
