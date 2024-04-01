@@ -11,12 +11,16 @@ use App\Models\User;
 class TodoController extends Controller
 {
     function index()
-    {
-        $todos = Todo::all();
-        // dd($todos);
+{
+    $todos = Todo::all();
+    $points = Todo::sum('point');
     
-        return view('posts.index', ['todos'=>$todos]);
-    }
+    // レベルの計算
+    $level = floor($points / 100) + 1; // 100ポイントごとにレベルが上がると仮定
+    
+    return view('posts.index', compact('todos', 'points', 'level'));
+}
+
 
     function show($id)
     {
