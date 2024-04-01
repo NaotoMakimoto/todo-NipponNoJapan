@@ -28,9 +28,12 @@
     <div class="edit_button">
         <a href="{{ route('posts.create') }}"> edit </a>
     </div>
-    <div class="archive_button">
+    {{-- <div class="archive_button">
         <a href="{{ route('show') }}">archive</a>
-    </div>
+    </div> --}}
+
+
+    <a href="{{ route('show') }}" class="btn_13">TODO diary</a>
 @endsection
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
