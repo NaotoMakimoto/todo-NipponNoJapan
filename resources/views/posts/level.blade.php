@@ -25,12 +25,11 @@
     </style>
 </head>
 <body>
-    <h1>モード選択</h1>
-    <h1>次のレベルまで{{ $points }}ポイント</h1>
-
+    <h1>Lv.{{ $level }}</h1>
+    <h1>次のレベルまで{{ $nextLevelPoints }}ポイント</h1>
     <!-- Progress Meter -->
     <div class="progress-bar">
-        <div class="progress">{{ $points }}%</div>
+        <div class="progress">{{ $nextLevelPoints }}</div>
     </div>
    
     @if ($points >= 0 && $points < 25)

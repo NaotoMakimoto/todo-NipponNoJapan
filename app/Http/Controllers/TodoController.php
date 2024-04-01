@@ -16,7 +16,7 @@ class TodoController extends Controller
     $points = Todo::sum('point');
     
     // レベルの計算
-    $level = floor($points / 100) + 1; // 100ポイントごとにレベルが上がると仮定
+    $level = floor($points / 25) + 1; // 100ポイントごとにレベルが上がると仮定
     
     return view('posts.index', compact('todos', 'points', 'level'));
 }
@@ -100,4 +100,19 @@ class TodoController extends Controller
         return view('posts.show', $data); // 必要なデータを渡してshow.blade.phpを表示
     }
 
+
+    function nextLevelPoints()
+    {
+        $todos = Todo::all();
+        $points = Todo::sum('point');
+        
+        // レベルの計算
+        $level = floor($points / 25) + 1; // 25ポイントごとにレベルが上がると仮定
+        
+        // 次のレベルまでのポイントを計算
+        $nextLevelPoints = ($level * 25) - $points;
+        
+        return view('posts.level', compact('todos', 'points', 'nextLevelPoints', 'level'));
+    }
+    
 }
