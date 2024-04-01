@@ -7,28 +7,11 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    {{-- <style>
-        .card-img-top {
-            object-fit: cover;
-            height: 100%; /* 画像の高さを調整 */
-            width: 100%; 
-        }
-    </style>
-
-    <style>
-        .custom-card {
-            /* カードの幅を調整 */
-            width: 25rem;
-            height: 50rem; 
-            /* height: auto;  */
-        }
-    </style> --}}
-
     <style>
         .custom-card {
             /* カードの幅を調整 */
             width: 20rem;
-            height: 30rem; /* 仮の高さ。画像のアスペクト比を維持するために設定 */
+            height: 28rem; /* 仮の高さ。画像のアスペクト比を維持するために設定 */
             display: flex; /* 子要素を縦方向に配置するために flex を使用 */
             justify-content: center; /* 子要素を中央に配置 */
             align-items: center; /* 子要素を中央に配置 */
@@ -67,11 +50,12 @@
 
     <form action="" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="image">
+        {{-- <input type="file" name="image"> --}}
+        <input type="file" name="image" accept="image/*">
         <button type="submit" class="btn btn-primary">アップロード</button>
     </form>
 
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4 ">
         @foreach($bonuses as $bonus)
         <div class="col">
             <div class="card custom-card"> <!-- カード自体のクラスに custom-card を追加 -->
@@ -89,7 +73,6 @@
                 </div>
             </div>
         </div>
-
         @endforeach
     </div>
 
