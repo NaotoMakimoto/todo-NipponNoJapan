@@ -30,7 +30,7 @@ class TodoController extends Controller
 
     function level()
     {
-        $todos = Todo::all();
+        $todos = Todo::all();  
         return view('posts.level', ['todos' => $todos]);
     }
 
@@ -39,14 +39,16 @@ class TodoController extends Controller
     $todos = Todo::all(); 
     // $points = $todos->sum('points'); 
     $points = Todo::sum('point'); 
-    
+    $level = floor($points / 100) + 1;     
     return view('posts.level', compact('todos', 'points'));
     } 
 
     function create()
     {
         $todos = Todo::all();
-        return view('posts.create', ['todos'=>$todos]);
+        $points = Todo::sum('point'); 
+        $level = floor($points / 100) + 1;  
+        return view('posts.create', compact('todos', 'level'));
     }
 
     function store(Request $request)
