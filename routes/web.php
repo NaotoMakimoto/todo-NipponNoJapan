@@ -61,3 +61,4 @@ Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.de
 
 Route::delete('/bonus/{id}', [BonuspointsController::class, 'destroy'])->name('bonus.destroy');
 
+Route::get('/level', [TodoController::class, 'nextLevelPoints'])->name('level');

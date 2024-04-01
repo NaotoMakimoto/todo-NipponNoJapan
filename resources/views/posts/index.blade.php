@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>todo</title>
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index_style.css') }}">
 </head>
+
+@extends('layouts.app_original')
+@section('content')
 <body>
+
     <h2><a href="{{ route('level') }}">Lv.5</a></h2>
     <h2><a href="{{ route('show') }}">写真投稿</a></h2>
     <h1>毎日習慣化TODO</h1>
     <h2>並び替え</h2>
+
     @foreach($todos as $todo)
 
      <div id="todo-{{ $todo->id }}" class="todo-item"
@@ -23,11 +30,13 @@
 
     @endforeach
 
-    <div>
-        <a href="{{ route('posts.create') }}">
-            <button>タスク編集</button>
-        </a>
+    <div class="edit_button">
+        <a href="{{ route('posts.create') }}"> edit </a>
     </div>
+    <div class="archive_button">
+        <a href="{{ route('show') }}">archive</a>
+    </div>
+@endsection
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -108,7 +117,7 @@
             const revealTime = new Date();
 
             console.log(revealTime);
-            revealTime.setHours(21, 14, 0, 0); // 次の表示時刻を設定
+            revealTime.setHours(22, 14, 0, 0); // 次の表示時刻を設定
             console.log(revealTime);
 
             if (new Date() > revealTime) {

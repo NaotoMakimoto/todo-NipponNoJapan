@@ -12,25 +12,26 @@
             background-color: #ddd;
             border-radius: 20px;
             margin-bottom: 20px;
+            overflow: hidden; /* Hides overflowing progress */
         }
         .progress {
-            width: {{ $points }}%; /* Dynamically set the width based on the points */
+            width: {{ ($points >= 25 ? ($points % 25) : $points) / 25 * 100 }}%; /* Dynamically set the width based on the points */
             background-color: #4caf50;
             height: 20px;
             border-radius: 20px;
             text-align: center;
             line-height: 20px;
             color: white;
+            transition: width 0.5s ease; /* Transition for smooth width change */
         }
     </style>
 </head>
 <body>
-    <h1>モード選択</h1>
-    <h1>次のレベルまで{{ $points }}ポイント</h1>
-
+    <h1>Lv.{{ $level }}</h1>
+    <h1>次のレベルまで{{ $nextLevelPoints }}ポイント</h1>
     <!-- Progress Meter -->
     <div class="progress-bar">
-        <div class="progress">{{ $points }}%</div>
+        <div class="progress" id="progress">{{ $points }}</div>
     </div>
    
     @if ($points >= 0 && $points < 25)
@@ -47,7 +48,6 @@
         <img src="{{ asset('img/endo.png') }}" alt="">
     @endif
 
-
     @foreach($todos as $todo)
     <a href="{{ route('todo.show', $todo->id) }}">
         <div>
@@ -56,5 +56,22 @@
     </a>
     @endforeach
     <a href="{{ route('todo.index') }}">戻る</a>
+
+    <script>
+        // JavaScript to update the progress bar width
+        var progress = document.getElementById('progress');
+        var points = {{ $points }};
+        var nextLevelPoints = {{ $nextLevelPoints }};
+        var progressBar = document.querySelector('.progress');
+
+        // Function to update progress bar width
+        function updateProgressBar() {
+            var percentage = (points >= 25 ? (points % 25) : points) / 25 * 100;
+            progressBar.style.width = percentage + '%';
+        }
+
+        // Call the function initially
+        updateProgressBar();
+    </script>
 </body>
 </html>
