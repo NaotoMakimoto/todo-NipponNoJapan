@@ -59,3 +59,4 @@ Route::get('/posts', [TodoController::class, 'create'])->name('posts.create');
 
 Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.destroy');
 
+Route::get('/level', [TodoController::class, 'nextLevelPoints'])->name('level');
