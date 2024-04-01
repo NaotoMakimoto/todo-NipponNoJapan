@@ -7,58 +7,65 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/level_style.css') }}">
     <style>
         /* Style for the progress meter */
         .progress-bar {
-            width: 100%;
+            width: 90%;
             background-color: #ddd;
             border-radius: 20px;
-            margin-bottom: 20px;
+            margin: 1.5rem auto;
             overflow: hidden; /* Hides overflowing progress */
         }
         .progress {
             width: {{ ($points >= 25 ? ($points % 25) : $points) / 25 * 100 }}%; /* Dynamically set the width based on the points */
-            background-color: #4caf50;
+            background-color: #153a5b;
             height: 20px;
             border-radius: 20px;
             text-align: center;
             line-height: 20px;
             color: white;
+            font-size: 0.8rem;
             transition: width 0.5s ease; /* Transition for smooth width change */
         }
     </style>
 </head>
+
+@extends('layouts.app_original')
+@section('content')
 <body>
-    <h1>Lv.{{ $level }}</h1>
-    <h1>次のレベルまで{{ $nextLevelPoints }}ポイント</h1>
+    <h1>次のレベルまで<a> {{ $nextLevelPoints }} </a>pts</h1>
     <!-- Progress Meter -->
     <div class="progress-bar">
         <div class="progress" id="progress">{{ $points }}</div>
     </div>
-   
-    @if ($points >= 0 && $points < 25)
-        <img src="{{ asset('img/naoto.png') }}" alt="">
-    @elseif ($points >= 25 && $points < 50)
-        <img src="{{ asset('img/hiroto.png') }}" alt="">
-    @elseif ($points >= 50 && $points < 75)
-        <img src="{{ asset('img/taishi.png') }}" alt="">
-    @elseif ($points >= 75 && $points < 100)
-        <img src="{{ asset('img/miura.png') }}" alt="">
-    @elseif ($points >= 100 && $points < 125)
-        <img src="{{ asset('img/danno.png') }}" alt="">
-    @else
-        <img src="{{ asset('img/endo.png') }}" alt="">
-    @endif
-
+   <div class="level_img_container">
+            @if ($points >= 0 && $points < 25)
+            <img src="{{ asset('img/naoto.png') }}" alt="">
+        @elseif ($points >= 25 && $points < 50)
+            <img src="{{ asset('img/hiroto.png') }}" alt="">
+        @elseif ($points >= 50 && $points < 75)
+            <img src="{{ asset('img/taishi.png') }}" alt="">
+        @elseif ($points >= 75 && $points < 100)
+            <img src="{{ asset('img/miura.png') }}" alt="">
+        @elseif ($points >= 100 && $points < 125)
+            <img src="{{ asset('img/danno.png') }}" alt="">
+        @else
+            <img src="{{ asset('img/endo.png') }}" alt="">
+        @endif
+   </div>
+    
     @foreach($todos as $todo)
-    <a href="{{ route('todo.show', $todo->id) }}">
-        <div>
-            <p>〇　{{ $todo->title }}  {{ $todo->continuous }}日継続</p>
+        <div class="level_continue">
+            <div>{{ $todo->title }}</div>  
+            <div>{{ $todo->continuous }}日継続！！</div>
+            
         </div>
-    </a>
     @endforeach
-    <a href="{{ route('todo.index') }}">戻る</a>
+    <div class="level_button">
+        <a href="{{ route('todo.index') }}">back</a>
+    </div>
+@endsection
 
     <script>
         // JavaScript to update the progress bar width

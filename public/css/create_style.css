@@ -1,3 +1,7 @@
+body {
+    background-color: #f5f9fc;
+}
+
 .create_container {
     width: 100vw;
     height: 90vh;
