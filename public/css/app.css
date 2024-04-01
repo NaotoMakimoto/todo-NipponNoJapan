@@ -8,3 +8,18 @@
         transform: translateX(100%); /* 右に移動 */
     }
 }
+
+header {
+    height: 8vh;
+    background-color: #153a5b;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+header > h2 > a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
