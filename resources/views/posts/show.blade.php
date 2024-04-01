@@ -45,12 +45,13 @@
             <div class="card custom-card"> <!-- カード自体のクラスに custom-card を追加 -->
                 <img src="{{ asset('storage/img/' . $bonus->image) }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    {{-- <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                     <h5 class="card-title">写真投稿日: {{ $bonus->created_at }}</h5>
                     <a href="#" class="btn btn-primary">トップへ戻る</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <form action="{{ route('bonus.destroy', $bonus->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">削除</button>
+                    </form>
                 </div>
             </div>
         </div>

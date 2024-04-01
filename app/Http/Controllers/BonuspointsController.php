@@ -86,6 +86,9 @@ class BonuspointsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bonus = Bonus::findOrFail($id);
+        $bonus->delete();
+
+        return redirect()->back()->with('success', '投稿が削除されました。');
     }
 }
