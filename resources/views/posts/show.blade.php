@@ -10,14 +10,14 @@
     <style>
         .card-img-top {
             object-fit: cover;
-            height: 200px; /* 画像の高さを調整 */
+            height: 100%; /* 画像の高さを調整 */
+            width: 100%; 
         }
     </style>
 
     <style>
         .custom-card {
             /* カードの幅を調整 */
-            width: 18rem;
             width: 25rem;
         }
     </style>
@@ -36,7 +36,7 @@
     <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="image">
-        <button type="submit">アップロード</button>
+        <button type="submit" class="btn btn-primary">アップロード</button>
     </form>
 
     <div class="row row-cols-1 row-cols-md-2 g-2">
@@ -45,8 +45,11 @@
             <div class="card custom-card"> <!-- カード自体のクラスに custom-card を追加 -->
                 <img src="{{ asset('storage/img/' . $bonus->image) }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    {{-- <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                    <h5 class="card-title">写真投稿日: {{ $bonus->created_at }}</h5>
+                    <a href="#" class="btn btn-primary">トップへ戻る</a>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
@@ -55,10 +58,9 @@
         @endforeach
     </div>
 
-
-
-    <a href="{{ route('todo.index') }}">戻る</a>
-
+    <form action="{{ route('todo.index') }}" method="GET">
+        <button type="submit" class="btn btn-primary">戻る</button>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
