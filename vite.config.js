@@ -1,28 +1,20 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import path from 'path'                      // 追加
+
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
-                'resources/js/app.js',
+                'resources/js/app.js',       // 'resources/sass/app.scss',を左記に変更
             ],
             refresh: true,
         }),
-        vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
-        }),
     ],
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
-        },
-    },
+	resolve: {                               // 追加ここから
+		alias: {
+			'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+		}
+	},                                       // 追加ここまで
 });

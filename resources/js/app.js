@@ -37,3 +37,6 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+
+// bootstrap追加のため記載
+import '../sass/app.scss'
