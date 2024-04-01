@@ -16,7 +16,7 @@ class TodoController extends Controller
     $points = Todo::sum('point');
     
     // レベルの計算
-    $level = floor($points / 100) + 1; // 100ポイントごとにレベルが上がると仮定
+    $level = floor($points / 25) + 1; // 100ポイントごとにレベルが上がると仮定
     
     return view('posts.index', compact('todos', 'points', 'level'));
 }
