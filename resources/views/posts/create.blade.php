@@ -21,7 +21,9 @@
             </div>
             <button type="submit">add</button>
         </form>
+        <hr>
   </div>
+  
   <div class="create_container_bottom">
         @foreach($todos as $todo)
           <form action="{{ route('posts.destroy', $todo->id) }}" method="POST" onsubmit="clickEvent(event)">

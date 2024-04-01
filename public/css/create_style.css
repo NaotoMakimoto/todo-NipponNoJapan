@@ -43,3 +43,12 @@ button {
 .create_content {
     margin-bottom: 0.5rem;
 }
+
+.create_content label {
+    color: #153a5b;
+}
+
+hr {
+    width: 80%;
+    margin: 8% auto;
+}
