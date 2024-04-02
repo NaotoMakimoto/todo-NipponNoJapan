@@ -17,6 +17,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Todo');
     }
 
+    function bonuses()
+    {
+        return $this->hasMany('App\Models\Bonus');
+    }
     
 
     /**

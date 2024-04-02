@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable(); 
-            $table->integer('points')->default(0); 
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
