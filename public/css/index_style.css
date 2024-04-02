@@ -60,7 +60,7 @@ a.btn_13 {
 	text-align: center;
 	text-decoration: none;
 	width: 120px;
-	margin: auto;
+	margin: 0 auto 2rem;
 	padding: 1rem 4rem;
 	font-weight: bold;
 	background: #eee;
