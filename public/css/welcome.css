@@ -23,6 +23,7 @@ html {
 }
 
 .welcome_login {
+    /* width: 100vw; */
     margin-bottom: 10%;
     height: 30vh;
 }
