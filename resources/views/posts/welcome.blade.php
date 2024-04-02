@@ -20,23 +20,32 @@
         <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     </head>
 
-    <body class="welcome_container">
-        <div class="welcome_logo">
-            <p>TO<br>DO</p>
-        </div>
-        <div class="welcome_login">
-            @if (Route::has('login'))
-                <div>
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Log in</a>
+    <body>
+        <div  class="welcome_container">
+            <div class="welcome_logo">
+                <p>TO<br>DO</p>
+            </div>
+            <div class="welcome_login">
+                @if (Route::has('login'))
+                    <div>
+                       
+                            <a href="{{ route('login') }}">Log in →</a>
+                          
+    
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register →</a>
+                            @endif
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                                <button type="submit">logout</button>
+                            </form>
+                       
+                    </div>
+                @endif
+            </div>
+
+        </div>
+        
     </body>
 </html>

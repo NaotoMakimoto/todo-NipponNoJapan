@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BonuspointsController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +27,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+// Route::post('/home', [HomeController::class, 'login'])->name('home.login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
