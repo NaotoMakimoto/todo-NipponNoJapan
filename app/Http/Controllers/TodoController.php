@@ -74,14 +74,21 @@ class TodoController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $todo = Todo::find($id); // 対象のTodoを取得
-        $todo->point += $request->point; // pointをインクリメント
-        $todo->continuous += $request->continuous; // continuousもインクリメント
-        $todo->save(); // 変更を保存
+{
+    $todo = Todo::find($id); // 対象のTodoを取得
+    $todo->point += $request->point; // pointをインクリメント
+    $todo->continuous += $request->continuous; // continuousもインクリメント
     
-        return response()->json(['success' => 'ポイントが正常に増加されました。']);
+    // 連続値が5の倍数の場合、ポイントを10ずつ増加
+    if ($todo->continuous % 5 == 0) {
+        $todo->point += 10;
     }
+    
+    $todo->save(); // 変更を保存
+
+    return response()->json(['success' => 'ポイントが正常に増加されました。']);
+}
+
 
     public function reset(Request $request, $id)
     {
