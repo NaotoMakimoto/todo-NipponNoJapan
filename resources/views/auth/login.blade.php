@@ -77,4 +77,5 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('show') }}" class="backtosignup">戻る</a>
 @endsection 

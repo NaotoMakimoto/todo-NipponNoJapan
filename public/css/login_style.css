@@ -1,5 +1,5 @@
 html {
-    background-color: pink;
+    background-color:#153a5b;
 }
 
 .card-header{
@@ -10,5 +10,32 @@ html {
 .btn-primary{
     background-color:#153a5b;
     border: none; 
+}
+/* 
+/* .backtosignup {
+    background-color:pink;
+    padding: 0.8rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1.7rem auto;
+    color: white;
+/* }  */
+
+.backtosignup{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 10px;
+	margin: 0 auto 2rem;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background:pink;
+	color: #153a5b;
+	border-radius: 1vh;
+	position: relative;
+	transition: 0.5s;
 }
 
