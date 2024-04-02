@@ -7,15 +7,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/index_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/show_style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <style>
+        body {
+            background-color: #f5f9fc;
+        }
+    </style>
 </head>
 
 @extends('layouts.app_original')
 @section('content')
-<body>
 
+<body>
     @if(Session::has('success'))
     <div class="alert alert-success">
         {{ Session::get('success') }}
@@ -31,6 +35,7 @@
         <button type="submit" class="btn btn-primary">＋</button>
     </form>
 
+<div class="layooutfortododiary">
     <div class="row row-cols-1 row-cols-md-4 g-4 ">
         @foreach($bonuses as $bonus)
         <div class="col">
@@ -40,22 +45,27 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">写真投稿日: {{ $bonus->created_at }}</h5>
-                    <a href="#" class="btn btn-primary">トップへ戻る</a>
+                    <a href="#" class="backtotop">トップへ戻る</a>
                     <form action="{{ route('bonus.destroy', $bonus->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">削除</button>
+                        <button type="submit" class="deletebutton">削除</button>
                     </form>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
+</div>
 
     <form action="{{ route('todo.index') }}" method="GET">
-        <button type="submit" class="btn btn-primary">戻る</button>
+        <button type="submit" class="showback">戻る</button>
     </form>
+
+
 @endsection
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+
 </body>
 </html>
