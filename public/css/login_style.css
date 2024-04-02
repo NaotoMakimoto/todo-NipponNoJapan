@@ -1,0 +1,14 @@
+html {
+    background-color: pink;
+}
+
+.card-header{
+    background-color:#153a5b;
+    color: white;
+}
+
+.btn-primary{
+    background-color:#153a5b;
+    border: none; 
+}
+

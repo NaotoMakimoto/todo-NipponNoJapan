@@ -1,11 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.app')  
 
 @section('content')
+
+{{-- css読み取りのための記載 --}}
+<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login_style.css') }}">
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                    {{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -69,5 +77,4 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+@endsection 
