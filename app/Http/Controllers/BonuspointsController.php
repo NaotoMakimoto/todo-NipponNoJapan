@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bonus;
+use App\Models\Todo;
 use Illuminate\Support\Facades\Session;
 
 class BonuspointsController extends Controller
@@ -62,7 +63,11 @@ class BonuspointsController extends Controller
     {
         //
         $bonuses = Bonus::all();
-        return view('posts.show', compact('bonuses'));
+        $todos = Todo::all(); 
+        // $points = $todos->sum('points'); 
+        $points = Todo::sum('point'); 
+        $level = floor($points / 100) + 1;  
+        return view('posts.show', compact('bonuses','level'));
     }
 
     /**
