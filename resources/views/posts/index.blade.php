@@ -27,15 +27,13 @@
 
     @endforeach
 
-    <div class="edit_button">
-        <a href="{{ route('posts.create') }}"> add / delete </a>
+    <div class="footer">
+        <div class="edit_button">
+            <a href="{{ route('posts.create') }}"> add / delete </a>
+        </div>
+        <a href="{{ route('show') }}" class="btn_13">TODO diary</a>
     </div>
-    {{-- <div class="archive_button">
-        <a href="{{ route('show') }}">archive</a>
-    </div> --}}
-
-
-    <a href="{{ route('show') }}" class="btn_13">TODO diary</a>
+   
 @endsection
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -53,20 +51,22 @@
         function handleTouchMove(event) {
             touchEndX = event.changedTouches[0].screenX;
         }
-    
+
         function handleTouchEnd(event, id) {
-            if (touchEndX > touchStartX) {
-                var element = document.getElementById("todo-" + id);
-                element.classList.add('swipe-out-right');
-                
-                element.addEventListener('animationend', function() {
-                    element.style.display = 'none'; 
-                    hiddenTodos[id] = true; 
-                    localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); 
-                    incrementPoint(id); 
-                }, { once: true });
-            }
-        }
+    if (touchEndX > touchStartX) {
+        var element = document.getElementById("todo-" + id);
+        element.classList.add('swipe-out-right');
+        
+        element.addEventListener('animationend', function() {
+            element.style.display = 'none'; 
+            hiddenTodos[id] = true; 
+            localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); 
+            incrementPoint(id); 
+            adjustFooter(); // スワイプによる非表示後にフッターの位置を再調整
+        }, { once: true });
+    }
+}
+
     
         function incrementPoint(id) {
             // CSRFトークンの取得
@@ -117,7 +117,7 @@
             const revealTime = new Date();
 
             console.log(revealTime);
-            revealTime.setHours(21, 14, 0, 0); // 次の表示時刻を設定
+            revealTime.setHours(2, 19, 30, 0); // 次の表示時刻を設定
             console.log(revealTime);
 
             if (new Date() > revealTime) {
@@ -144,6 +144,9 @@
                 todosToResetContinuous.forEach(resetContinuous);
 
                 localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
+
+                
+                adjustFooter(); // コンテンツの高さが変わる可能性があるので、フッターの位置を再調整
             }, msUntilReveal);
         }
     
@@ -159,6 +162,46 @@
                 }
             });
         });
+
+
+        //ボタン固定
+        function adjustFooter() {
+    console.log('adjustFooter function called');
+
+    const footer = document.querySelector('.footer');
+    if (!footer) return; // フッターが見つからない場合は早期リターン
+
+    const contentHeight = document.body.scrollHeight; // ドキュメントの全体の高さを取得
+    const viewportHeight = window.innerHeight;
+
+    console.log('Content Height: ', contentHeight, 'Viewport Height: ', viewportHeight);
+
+    if (contentHeight < viewportHeight) { // '<=' から '<' に変更
+        footer.classList.add('fixed-footer');
+    } else {
+        footer.classList.remove('fixed-footer');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', adjustFooter);
+window.addEventListener('resize', adjustFooter);
+
+
+
+
+// function observeDOMChanges() {
+//     const observer = new MutationObserver(adjustFooter);
+//     observer.observe(document.body, {
+//         childList: true,
+//         subtree: true,
+//         attributes: false,
+//         characterData: false
+//     });
+// }
+// // ウィンドウのリサイズイベントが発生すると、フッターの位置を調整
+// window.addEventListener('resize', adjustFooter);
+
+
     </script>
     
 </body>
