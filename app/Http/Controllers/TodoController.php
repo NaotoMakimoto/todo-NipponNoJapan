@@ -51,8 +51,8 @@ class TodoController extends Controller
         $userId = Auth::id(); // ログインしているユーザーのIDを取得
         $todos = Todo::where('user_id', $userId)->get(); // そのユーザーのTodo要素を取得
         $points = $todos->sum('point'); // そのユーザーのポイントの合計を計算
-        $level = floor($points / 100) + 1; // レベルを計算
         $user = Auth::user();
+        $level = floor($points / 25) + 1; // 25ポイントごとにレベルが上がると仮定
 
         return view('posts.create', compact('todos', 'points', 'level', 'user'));
     }

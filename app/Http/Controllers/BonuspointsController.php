@@ -70,7 +70,7 @@ class BonuspointsController extends Controller
         $users = User::all();
         // $points = $todos->sum('points'); 
         $points = $todos->sum('point'); 
-        $level = floor($points / 100) + 1;  
+        $level = floor($points / 25) + 1; // 25ポイントごとにレベルが上がると仮定
         return view('posts.show', compact('bonuses','level', 'user', 'users'));
     }
 
