@@ -22,20 +22,22 @@ html {
     color: white;
 /* }  */
 
-.backtosignup{
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-	text-align: center;
-	text-decoration: none;
-	width: 10px;
-	margin: 0 auto 2rem;
-	padding: 1rem 4rem;
-	font-weight: bold;
-	background:pink;
-	color: #153a5b;
-	border-radius: 1vh;
-	position: relative;
-	transition: 0.5s;
-}
 
+.backtosignup {
+    display: flex;
+    justify-content: center; /* 横方向中央揃え */
+    align-items: center; /* 縦方向中央揃え */
+    position: fixed; /* 要素を固定位置に配置 */
+    /* top: 30%; /* 上端を画面の中央に配置 */
+    /* left: 50%; 左端を画面の中央に配置 */ */
+    transform: translate(-50%, -50%); /* 中央揃え */
+    text-decoration: none;
+    width: 15vh; /* 幅を自動調整 */
+    margin: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    background: gray;
+    color: white;
+    border-radius: 1vh;
+    transition: 0.5s;
+}

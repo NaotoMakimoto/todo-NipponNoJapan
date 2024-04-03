@@ -65,3 +65,8 @@ Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.de
 Route::delete('/bonus/{id}', [BonuspointsController::class, 'destroy'])->name('bonus.destroy');
 
 Route::get('/level', [TodoController::class, 'nextLevelPoints'])->name('level');
+
+
+// Route::get('/', function () {
+//     return redirect('http://127.0.0.1:8002/');
+// })->name('home');
