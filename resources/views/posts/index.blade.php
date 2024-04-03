@@ -14,6 +14,8 @@
 @section('content')
 <body>
 
+    <h1>TODO</h1>
+
     @foreach($todos as $todo)
 
      <div id="todo-{{ $todo->id }}" class="todo-item"
@@ -26,7 +28,7 @@
     @endforeach
 
     <div class="edit_button">
-        <a href="{{ route('posts.create') }}"> edit </a>
+        <a href="{{ route('posts.create') }}"> add / delete </a>
     </div>
     {{-- <div class="archive_button">
         <a href="{{ route('show') }}">archive</a>
@@ -115,7 +117,7 @@
             const revealTime = new Date();
 
             console.log(revealTime);
-            revealTime.setHours(23, 47, 30, 0); // 次の表示時刻を設定
+            revealTime.setHours(21, 14, 0, 0); // 次の表示時刻を設定
             console.log(revealTime);
 
             if (new Date() > revealTime) {

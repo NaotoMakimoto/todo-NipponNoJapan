@@ -25,6 +25,15 @@ body {
     background-color: white;
 }
 
+.back_button {
+    margin: 1rem ;
+}
+
+.back_button a {
+    color: #153a5b;
+    text-decoration: none;
+}
+
 button {
     background-color: #153a5b;
     padding: 0.5rem;

@@ -1,8 +1,19 @@
 body {
     background-color: #E7EEFE;
+    position: relative;
+}
+
+h1 {
+    position: absolute;
+    color: white;
+    opacity: 0.3;
+    font-size: 13rem;
+    z-index: -1;
+    writing-mode: vertical-rl;
 }
 
 .todo-item {
+   
     width: 60vw;
     border: #153a5b 1px solid;
     border-radius: 10px;
@@ -63,11 +74,12 @@ a.btn_13 {
 	margin: 0 auto 2rem;
 	padding: 1rem 4rem;
 	font-weight: bold;
-	/* background: #eee; */
+	background: white;
 	color: #153a5b;
 	border-radius: 100vh;
 	position: relative;
 	transition: 0.5s;
+    font-size: 1rem;
 }
 a.btn_13::before {
 	content: '';

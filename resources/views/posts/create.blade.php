@@ -12,6 +12,7 @@
 @extends('layouts.app_original')
 @section('content')
 <body>
+
   <div class="create_container">
       <div class="create_container_top">
         <form action="{{ route('post.store') }}" method="POST">
@@ -22,9 +23,9 @@
             <button type="submit">add</button>
         </form>
         <hr>
-  </div>
+      </div>
   
-  <div class="create_container_bottom">
+      <div class="create_container_bottom">
         @foreach($todos as $todo)
           <form action="{{ route('posts.destroy', $todo->id) }}" method="POST" onsubmit="clickEvent(event)">
             @csrf
@@ -37,13 +38,15 @@
         @endforeach
             <button type="submit">delete</button>
           </form>
-  </div>
-    {{-- <div>
-        <a href="{{ route('todo.index') }}">
-          <button type="submit" class="btn btn-primary">戻る</button>
-        </a>
-    </div> --}}
-</div>
+          <div class="back_button">
+            <a href="{{ route('todo.index') }}">
+              ← back to home
+            </a>
+          </div>
+      </div>
+      
+      
+    </div>
 @endsection
  
   
