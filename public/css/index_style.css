@@ -15,6 +15,9 @@ h1 {
     font-size: 13rem;
     z-index: -1;
     writing-mode: vertical-rl;
+    width: 170px;
+    top: 8vh;
+    left: 0;
 }
 
 .todo-item {
