@@ -36,7 +36,7 @@
             @csrf
             <div class="mb-3">
                 <label for="image" class="form-label">画像を選択してください</label>
-                <div class="input-group" style="width: 70%;">
+                <div class="input-group" style="width: 100%;">
                     <input type="file" name="image" id="image" class="form-control" accept="image/*" >
                     <button type="submit" class="uploadbutton" >＋</button>
                 </div>
@@ -45,7 +45,7 @@
 
         {{-- <button type="submit" class="upload">＋</button> --}}
         
-    </form>
+    {{-- </form> --}}
 
 <div class="layooutfortododiary">
     <div class="row row-cols-1 row-cols-md-4 g-4 ">
@@ -57,14 +57,22 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">写真投稿日: {{ $bonus->created_at }}</h5>
+                
+                    <button class="backtotopthesite" style="text-decoration: none;" onclick="scrollToTop()">top</button>
 
-                    {{-- <a href="#" class="backtotop">トップへ戻る</a> --}}
-                    <a href="#"><button class="backtotopthesite">トップへ戻る</button></a>
+                    <script>
+                        function scrollToTop() {
+                          window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                          });
+                        }
+                        </script>
 
                     <form action="{{ route('bonus.destroy', $bonus->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="deletebutton">削除</button>
+                        <button type="submit" class="deletebutton">×</button>
                     </form>
                 </div>
             </div>
@@ -74,7 +82,8 @@
 </div>
 
     <form action="{{ route('todo.index') }}" method="GET">
-        <button type="submit" class="showback">戻る</button>
+        <button type="submit" class="showback">back
+        </button>
     </form>
 
 
