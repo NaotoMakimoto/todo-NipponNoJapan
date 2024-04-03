@@ -6,7 +6,7 @@
     align-content: stretch;
 } 
 
-.showback {
+/* .showback {
     background-color:#153a5b;
     padding: 0.8rem;
     width: 15vw;
@@ -34,7 +34,21 @@
     text-align: center;
     margin: 1.7rem auto;
     color: white;
+} */
+
+.showback, .backtotopthesite, .deletebutton {
+    background-color: #153a5b;
+    padding: 0.5rem;
+    width: 35vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1.7rem auto;
+    color: white;
+    display: block; /* ボタンをブロック要素にする */
+    text-decoration: none; /* ボタンからデフォルトの下線を削除 */
+    border: none; /* ボタンの枠を削除 */
 }
+
 
 .uploadbutton{
     background-color:#153a5b;

@@ -59,13 +59,29 @@
                     <h5 class="card-title">写真投稿日: {{ $bonus->created_at }}</h5>
 
                     {{-- <a href="#" class="backtotop">トップへ戻る</a> --}}
-                    <a href="#"><button class="backtotopthesite">トップへ戻る</button></a>
+                    {{-- <a href="#"><button class="backtotopthesite">トップへ戻る</button></a>
 
                     <form action="{{ route('bonus.destroy', $bonus->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="deletebutton">削除</button>
-                    </form>
+                    </form> --}}
+
+                    <form action="{{ route('bonus.destroy', $bonus->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="deletebutton">削除</button>
+                    </form>  
+
+
+                    <button type="button" class="backtotopthesite" onclick="scrollToTop()">トップへ戻る</button>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // ページのトップまでスムーズにスクロール
+    }
+</script>
+                    
                 </div>
             </div>
         </div>
