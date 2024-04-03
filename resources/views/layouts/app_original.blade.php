@@ -5,7 +5,7 @@
       @csrf
     </form>
     <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-      ログアウト
+      {{ $user->name }}
     </a>
   </header>
   @yield('content')

@@ -9,6 +9,10 @@ class Todo extends Model
 {
     use HasFactory;
 
+    function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
 }
 
