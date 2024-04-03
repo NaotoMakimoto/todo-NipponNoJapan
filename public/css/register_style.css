@@ -10,18 +10,8 @@ html {
 .btn-primary{
     background-color:#153a5b;
     border: none; 
+    margin-top: 15px;
 }
-/* 
-/* .backtosignup {
-    background-color:pink;
-    padding: 0.8rem;
-    width: 15vw;
-    border-radius: 15px;
-    text-align: center;
-    margin: 1.7rem auto;
-    color: white;
-/* }  */
-
 
 .backtosignup {
     display: flex;
@@ -36,7 +26,7 @@ html {
     margin: 2rem;
     padding: 1rem;
     font-weight: bold;
-    background: #153a5b;
+    background:#153a5b;
     color: white;
     border-radius: 1vh;
     transition: 0.5s;

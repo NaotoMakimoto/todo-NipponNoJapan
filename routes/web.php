@@ -24,7 +24,7 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', function () {
     return view('posts.welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -67,6 +67,3 @@ Route::delete('/bonus/{id}', [BonuspointsController::class, 'destroy'])->name('b
 Route::get('/level', [TodoController::class, 'nextLevelPoints'])->name('level');
 
 
-// Route::get('/', function () {
-//     return redirect('http://127.0.0.1:8002/');
-// })->name('home');

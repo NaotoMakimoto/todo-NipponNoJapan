@@ -83,6 +83,6 @@
         </div>
     </div>
 
-        <a href="{{ route('level') }}" class="backtosignup">戻る</a>
+        <a href="{{ route('welcome') }}" class="backtosignup">Back</a> 
 
 @endsection 
