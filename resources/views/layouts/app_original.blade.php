@@ -28,11 +28,15 @@
 <body>
 
   <header class="">
+
     <img src="{{ asset('image/newlogo.png') }}" alt="Logo" class="logo" onclick="redirectToTodoIndex()">
 
-    <p onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-      {{ $user->name }}
+    <p>
+        {{ $user->name }}
+        <span class="balloon" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">→ log out</span>
     </p>
+
+
     <h2><a href="{{ route('level') }}">Lv.{{ $level }}</a></h2>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
