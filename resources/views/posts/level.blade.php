@@ -42,17 +42,17 @@
 
    
     @if ($points >= 0 && $points < 25)
-        <img src="{{ asset('img/m1.jpg') }}" alt="">
+        <img src="{{ asset('img/n1.jpg') }}" alt="">
     @elseif ($points >= 25 && $points < 50)
-        <img src="{{ asset('img/m2.jpg') }}" alt="">
+        <img src="{{ asset('img/n2.jpg') }}" alt="">
     @elseif ($points >= 50 && $points < 75)
-        <img src="{{ asset('img/m3.jpg') }}" alt="">
+        <img src="{{ asset('img/n3.jpg') }}" alt="">
     @elseif ($points >= 75 && $points < 100)
-        <img src="{{ asset('img/m4.jpg') }}" alt="">
+        <img src="{{ asset('img/n4.jpg') }}" alt="">
     @elseif ($points >= 100 && $points < 125)
-        <img src="{{ asset('img/m5.jpg') }}" alt="">
+        <img src="{{ asset('img/n5.jpg') }}" alt="">
     @else
-        <img src="{{ asset('img/open.jpg') }}" alt="">
+        <img src="{{ asset('img/n5.jpg') }}" alt="">
     @endif
 
 
