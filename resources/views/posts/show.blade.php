@@ -49,7 +49,8 @@
 
 <div class="layooutfortododiary">
     <div class="row row-cols-1 row-cols-md-4 g-4 ">
-        @foreach($bonuses as $bonus)
+        {{-- @foreach($bonuses as $bonus) --}}
+        @foreach($bonuses->reverse() as $bonus)
         <div class="col">
             <div class="card custom-card"> <!-- カード自体のクラスに custom-card を追加 -->
                 <div class='postimg'>
