@@ -12,6 +12,7 @@
 header {
     height: 8vh;
     background-color: #153a5b;
+    /* position: relative; */
     display: flex;
     justify-content: right;
     align-items: center;
@@ -20,11 +21,35 @@ header {
 header > h2 > a {
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
-    margin: 0 1rem;
+    font-size: 1.6rem;
+    margin: 0 1.5rem;
 }
 
 header p {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    font-weight: bold;
 }
+
+header h5 {
+    font-size: 0.8rem;
+    color: white;
+    position: absolute;
+    right: 1rem;
+    bottom: 0.3rem;
+    font-weight: lighter;
+}
+
+p:hover .balloon {
+    display: block;
+}
+
+.balloon {
+    position : absolute;               
+    display: none;            
+    padding: 0.3rem 0.5rem;  
+    border-radius: 2px;
+    color: #153a5b;                  
+    background-color: rgba(255, 255, 255, 0.9);                              
+    font-size: 0.8rem; 
+  }
