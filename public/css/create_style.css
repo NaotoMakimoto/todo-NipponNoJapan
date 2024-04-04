@@ -1,0 +1,67 @@
+body {
+    background-color: #E7EEFE;
+}
+
+.create_container {
+    width: 100vw;
+    height: 90vh;
+}
+
+.create_container_top {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create_input > input{
+    box-sizing: border-box;
+    width: 70vw;
+    border: #153a5b 1px solid;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin :3rem auto 0 auto;
+    background-color: white;
+}
+
+.back_button {
+    margin: 1rem ;
+}
+
+.back_button a {
+    color: #153a5b;
+    text-decoration: none;
+}
+
+button {
+    background-color: #153a5b;
+    padding: 0.5rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1.7rem auto;
+    color: white;
+    display: block;
+}
+
+.create_container_bottom {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create_content {
+    margin-bottom: 0.5rem;
+}
+
+.create_content label {
+    color: #153a5b;
+}
+
+hr {
+    width: 80%;
+    margin: 8% auto;
+}

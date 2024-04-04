@@ -1,0 +1,51 @@
+body {
+    background-color: #E7EEFE;
+}
+
+h1 {
+    text-align: center;
+    color: #153a5b;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+h1 > a {
+    font-size: 2.5rem;
+}
+
+.level_img_container {
+    width: 90vw;
+    height: 70vh;
+    margin: 0 auto 2rem;
+    border: black solid 1px;
+}
+
+.level_img_container img {
+    width: 100%;
+}
+
+.level_continue {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem auto;
+    border-bottom: #dddddd solid 0.5px;
+    color: #153a5b;
+}
+
+.level_button {
+    background-color: #153a5b;
+    padding: 0.8rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1.7rem auto;
+}
+
+.level_button a {
+    width: 100%;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+

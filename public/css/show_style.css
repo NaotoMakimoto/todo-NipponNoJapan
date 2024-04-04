@@ -1,0 +1,93 @@
+.col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-content: stretch;
+} 
+
+.showback {
+    background-color:#153a5b;
+    padding: 0.5rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1rem auto;
+    color: white;
+    display: block; 
+    text-decoration: none;
+    border: none; 
+}
+
+.backtotopthesite{
+    background-color:#153a5b;
+    padding: 0.5rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1rem auto;
+    color: white;
+    display: block; 
+    /* text-decoration: none !important; */
+    border: none; 
+}
+
+.deletebutton{
+    background-color:#153a5b;
+    padding: 0.5rem;
+    width: 15vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1rem auto;
+    color: white;
+    display: block; 
+    text-decoration: none;
+    border: none; 
+} 
+
+/* .showback, .backtotopthesite, .deletebutton {
+    background-color: #153a5b;
+    padding: 0.5rem;
+    width: 35vw;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1.7rem auto;
+    color: white;
+    display: block; /* ボタンをブロック要素にする */
+    /* text-decoration: none; /* ボタンからデフォルトの下線を削除 */
+    /* border: none; 
+}  */
+
+
+.uploadbutton{
+    background-color:#153a5b;
+    border-radius: 5px;
+    color:white;
+}
+
+
+.custom-card {
+    /* カードの幅を調整 */
+    width: 20rem;
+    height: 28rem; /* 仮の高さ。画像のアスペクト比を維持するために設定 */
+    display: flex; /* 子要素を縦方向に配置するために flex を使用 */
+    justify-content: center; /* 子要素を中央に配置 */
+    align-items: center; /* 子要素を中央に配置 */
+}
+
+.card-img-container {
+    /* 画像をカードの中央に配置し、オーバーフローした部分を隠す */
+    overflow: hidden;
+    width: 100%; /* 画像を親要素に合わせる */
+    height: 100%; /* 画像を親要素に合わせる */
+}
+
+.card-img-top {
+    object-fit: cover; /* 画像を維持しながら親要素にフィットさせる */
+    width: 100%; /* 画像を親要素に合わせる */
+    height: 100%; /* 画像を親要素に合わせる */
+}
+
+.postimg{
+    width: 100%;
+    height: 20rem; 
+}

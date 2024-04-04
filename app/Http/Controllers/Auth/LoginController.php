@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,7 +26,16 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/todo';
+
+
+    // protected $redirectTo = '/todo';
+
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect('/todo');
+    }
+    
+
 
     /**
      * Create a new controller instance.

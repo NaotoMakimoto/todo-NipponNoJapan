@@ -1,8 +1,27 @@
 body {
-    background-color: #f5f9fc;
+    background-color: #E7EEFE;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; コンテンツがビューポートより小さい場合でも、最小限の高さを100vhに設定 */
+    margin: 0; /* ボディのマージンをリセットする */
+    height: auto;
+}
+
+h1 {
+    position: absolute;
+    color: white;
+    opacity: 0.3;
+    font-size: 13rem;
+    z-index: -1;
+    writing-mode: vertical-rl;
+    width: 170px;
+    top: 8vh;
+    left: 0;
 }
 
 .todo-item {
+   
     width: 60vw;
     border: #153a5b 1px solid;
     border-radius: 10px;
@@ -15,6 +34,23 @@ body {
     color: #153a5b;
     font-size: 1rem;
     text-align: center;
+}
+
+.fixed-footer {
+    position: fixed !important; /* !important を追加して優先度を上げる */
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+}
+
+
+.footer {
+    position: relative;
+    /* bottom: 0;
+    left: 0;
+    right: 0; */
+    width: 100%; 
 }
 
 .edit_button {
@@ -48,3 +84,49 @@ body {
     font-size: 1rem;
     color: white;
 }
+
+
+
+/* --------TODO diaryボタン ----------------*/
+
+a.btn_13 {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+	margin: 0 auto 2rem;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	background: white;
+	color: #153a5b;
+	border-radius: 100vh;
+	position: relative;
+	transition: 0.5s;
+    font-size: 1rem;
+}
+a.btn_13::before {
+	content: '';
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 1em;
+	transform: translateY(calc(-50% - 2px)) rotate(45deg);
+	width: 10px;
+	height: 1px;
+	background: #153a5b;
+}
+a.btn_13::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 1px;
+	background-color: #153a5b;
+}
+/* a.btn_13:hover {
+	background: #153a5b;
+	color: #eee;
+} */

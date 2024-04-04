@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BonuspointsController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,9 +24,11 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', function () {
     return view('posts.welcome');
-});
+})->name('welcome');
 
 Auth::routes();
+
+// Route::post('/home', [HomeController::class, 'login'])->name('home.login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -59,4 +62,8 @@ Route::get('/posts', [TodoController::class, 'create'])->name('posts.create');
 
 Route::delete('/posts/{id}', [TodoController::class, 'destroy'])->name('posts.destroy');
 
+Route::delete('/bonus/{id}', [BonuspointsController::class, 'destroy'])->name('bonus.destroy');
+
 Route::get('/level', [TodoController::class, 'nextLevelPoints'])->name('level');
+
+

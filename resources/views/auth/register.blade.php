@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+{{-- css読み取りのための記載 --}}
+<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/register_style.css') }}">
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -67,6 +74,8 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -74,4 +83,7 @@
         </div>
     </div>
 </div>
+
+<a href="{{ route('welcome') }}" class="backtosignup">Back</a> 
+
 @endsection

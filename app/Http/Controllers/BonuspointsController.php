@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bonus;
+use App\Models\Todo;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class BonuspointsController extends Controller
 {
@@ -60,9 +63,15 @@ class BonuspointsController extends Controller
      */
     public function show()
     {
-        //
+        $user = Auth::user();
+        $userId = Auth::id();
         $bonuses = Bonus::all();
-        return view('posts.show', compact('bonuses'));
+        $todos = Todo::where('user_id', $userId)->get();
+        $users = User::all();
+        // $points = $todos->sum('points'); 
+        $points = $todos->sum('point'); 
+        $level = floor($points / 25) + 1; // 25ポイントごとにレベルが上がると仮定
+        return view('posts.show', compact('bonuses','level', 'user', 'users'));
     }
 
     /**
@@ -86,6 +95,9 @@ class BonuspointsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bonus = Bonus::findOrFail($id);
+        $bonus->delete();
+
+        return redirect()->back()->with('success', '投稿が削除されました。');
     }
 }
