@@ -14,14 +14,16 @@ h1 > a {
 }
 
 .level_img_container {
-    width: 90vw;
+    max-width: 90vw;
     height: 70vh;
     margin: 0 auto 2rem;
     border: black solid 1px;
 }
 
 .level_img_container img {
-    width: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
 }
 
 .level_continue {
