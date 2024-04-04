@@ -28,31 +28,21 @@ html, body {
 
 }
 
-.welcome_logo p {
-    color: white;
-    font-size: 8rem;
-    line-height: 85%;
-    margin-top: 130%;
-}
+
 
 .welcome_login {
     width: 100vw;
-    margin-bottom: 10%;
-    height: 30vh;
+    height: 13vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
 
 .welcome_login a {
     color: white;
     text-decoration: none;
-    font-size: 2.3rem;
-    display: block; 
-    align-items: center;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    margin-bottom: 2rem; 
-    margin-left: 50px;
+    font-size: 2.3rem; 
 }
 
 
