@@ -39,22 +39,24 @@
     <div class="progress-bar">
         <div class="progress" id="progress">{{ $points }}</div>
     </div>
-   <div class="level_img_container">
-            @if ($points >= 0 && $points < 25)
-            <img src="{{ asset('img/naoto.png') }}" alt="">
-        @elseif ($points >= 25 && $points < 50)
-            <img src="{{ asset('img/hiroto.png') }}" alt="">
-        @elseif ($points >= 50 && $points < 75)
-            <img src="{{ asset('img/taishi.png') }}" alt="">
-        @elseif ($points >= 75 && $points < 100)
-            <img src="{{ asset('img/miura.png') }}" alt="">
-        @elseif ($points >= 100 && $points < 125)
-            <img src="{{ asset('img/danno.png') }}" alt="">
-        @else
-            <img src="{{ asset('img/endo.png') }}" alt="">
-        @endif
-   </div>
-    
+
+   
+    @if ($points >= 0 && $points < 25)
+        <img src="{{ asset('img/n1.jpg') }}" alt="">
+    @elseif ($points >= 25 && $points < 50)
+        <img src="{{ asset('img/n2.jpg') }}" alt="">
+    @elseif ($points >= 50 && $points < 75)
+        <img src="{{ asset('img/n3.jpg') }}" alt="">
+    @elseif ($points >= 75 && $points < 100)
+        <img src="{{ asset('img/n4.jpg') }}" alt="">
+    @elseif ($points >= 100 && $points < 125)
+        <img src="{{ asset('img/n5.jpg') }}" alt="">
+    @else
+        <img src="{{ asset('img/n5.jpg') }}" alt="">
+    @endif
+
+
+
     @foreach($todos as $todo)
         <div class="level_continue">
             <div>{{ $todo->title }}</div>  
