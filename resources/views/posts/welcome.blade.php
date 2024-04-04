@@ -24,7 +24,7 @@
         <div  class="welcome_container">
             <div class="welcome_logo">
                 {{-- <p>TO<br>DO</p> --}}
-                <img src="{{ asset('image/newlogo1.png') }}" alt="Logo" class="logo">
+                <img src="{{ asset('image/newlogo1.png') }}" alt="Logo" class="logo" style="width: 200px; height: auto;">
             </div>
 
             <div class="welcome_login">
