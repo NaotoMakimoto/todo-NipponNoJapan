@@ -21,9 +21,19 @@
 
 <body>
     @if(Session::has('success'))
-    <div class="alert alert-secondary">
+    <div id="successMessage" class="alert alert-secondary" style="transition: opacity 0.5s;">
         {{ Session::get('success') }}
     </div>
+    <script>
+        // 5秒後にメッセージを非表示にする関数
+        setTimeout(function(){
+            var successMessage = document.getElementById('successMessage');
+            successMessage.style.opacity = '0';
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 500); // 0.5秒後に非表示に
+        }, 3000); // 5000ミリ秒 = 5秒
+    </script>
     @endif
 
     <h1>TODO diary</h1>
