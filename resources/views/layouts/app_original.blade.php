@@ -1,6 +1,6 @@
 <body>
   <header class="">
-
+    
     <p onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         {{ $user->name }}
       </p>
@@ -13,5 +13,23 @@
   <footer>
    
   </footer>
+  
+
+<button id="playButton">Play Sound</button>
+
+<audio id="levelUpSound" src="/audio/hiro.mp4" preload="auto"></audio>
+
+<script>
+    document.getElementById('playButton').addEventListener('click', function() {
+        playLevelUpSound();
+    });
+
+    function playLevelUpSound() {
+        var audio = document.getElementById('levelUpSound');
+        audio.play();
+    }
+</script>
+
+
 </body>
 
