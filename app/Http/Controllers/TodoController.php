@@ -20,6 +20,22 @@ class TodoController extends Controller
     
     // レベルの計算
     $level = floor($points / 25) + 1; // 100ポイントごとにレベルが上がると仮定
+
+    $script = "
+            <script>
+                function playLevelUpSound() {
+                    var audio = new Audio('/audio/hiro.mp4');
+                    audio.play();
+                }
+                
+                // レベルが上がったかどうかをチェックし、上がった場合は音声を再生
+                var previousLevel = localStorage.getItem('previousLevel') || 0;
+                if ($level > previousLevel) {
+                    playLevelUpSound();
+                    localStorage.setItem('previousLevel', $level);
+                }
+            </script>
+        ";
     
     return view('posts.index', compact('todos', 'points', 'level', 'user'));
 }
