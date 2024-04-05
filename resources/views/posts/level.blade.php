@@ -38,16 +38,42 @@
 
 <audio id="levelUpSound" src="/audio/hirohiro.mp4" preload="auto"></audio>
 
+<button id="playNewSoundButton">Play New Sound</button>
+<audio id="newSound" src="/audio/1.mp4" preload="auto"></audio>
+<button id="playAnotherSoundButton">Play Another Sound</button>
+<audio id="anotherSound" src="/audio/2.mp4" preload="auto"></audio>
+
+
 <script>
     document.getElementById('playButton').addEventListener('click', function() {
         playLevelUpSound();
+    });
+
+    document.getElementById('playNewSoundButton').addEventListener('click', function() {
+        playNewSound();
+    });
+
+    document.getElementById('playAnotherSoundButton').addEventListener('click', function() {
+        playAnotherSound();
     });
 
     function playLevelUpSound() {
         var audio = document.getElementById('levelUpSound');
         audio.play();
     }
+
+    function playNewSound() {
+        var audio = document.getElementById('newSound');
+        audio.play();
+    }
+
+    function playAnotherSound() {
+        var audio = document.getElementById('anotherSound');
+        audio.play();
+    }
 </script>
+
+
     <h1>次のレベルまで<a> {{ $nextLevelPoints }} </a>pts</h1>
     <!-- Progress Meter -->
     <div class="progress-bar">
