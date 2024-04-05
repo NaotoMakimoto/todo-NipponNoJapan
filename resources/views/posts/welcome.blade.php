@@ -23,21 +23,17 @@
     <body>
         <div  class="welcome_container">
             <div class="welcome_logo">
-                <p>TO<br>DO</p>
+                {{-- <p>TO<br>DO</p> --}}
+                <img src="{{ asset('image/newlogo1.png') }}" alt="Logo" class="logo" style="width: 200px; height: auto;">
             </div>
+
             <div class="welcome_login">
                 @if (Route::has('login'))
-                    <div>
-                       
+                <div>
                             <a href="{{ route('login') }}">Log in →</a>
-                          
-    
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}">Register →</a>
                             @endif
-
-                            
-                       
                     </div>
                 @endif
             </div>

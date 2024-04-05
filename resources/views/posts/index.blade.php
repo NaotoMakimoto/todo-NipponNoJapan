@@ -117,7 +117,9 @@
             const revealTime = new Date();
 
             console.log(revealTime);
-            revealTime.setHours(11, 8, 0, 0); // 次の表示時刻を設定
+
+            revealTime.setHours(13, 50, 0, 0); // 次の表示時刻を設定
+
             console.log(revealTime);
 
             if (new Date() > revealTime) {
@@ -145,8 +147,7 @@
 
                 localStorage.setItem('hiddenTodos', JSON.stringify(hiddenTodos)); // 変更をローカルストレージに保存
 
-                
-                adjustFooter(); // コンテンツの高さが変わる可能性があるので、フッターの位置を再調整
+                    adjustFooter();
             }, msUntilReveal);
         }
     
@@ -166,42 +167,31 @@
 
         //ボタン固定
         function adjustFooter() {
-    console.log('adjustFooter function called');
+            console.log('adjustFooter function called');
 
-    const footer = document.querySelector('.footer');
-    if (!footer) return; // フッターが見つからない場合は早期リターン
+            const footer = document.querySelector('.footer');
+            if (!footer) return; // フッターが見つからない場合は早期リターン
 
-    const contentHeight = document.body.scrollHeight; // ドキュメントの全体の高さを取得
-    const viewportHeight = window.innerHeight;
+            const footerFixed = footer.classList.contains('fixed-footer');
 
-    console.log('Content Height: ', contentHeight, 'Viewport Height: ', viewportHeight);
+            if (footerFixed) {
+                footer.classList.remove('fixed-footer');
+            }
 
-    if (contentHeight < viewportHeight) { // '<=' から '<' に変更
-        footer.classList.add('fixed-footer');
-    } else {
-        footer.classList.remove('fixed-footer');
-    }
-}
+            const contentHeight = document.body.scrollHeight; // ドキュメントの全体の高さを取得
+            const viewportHeight = window.innerHeight;
 
-document.addEventListener('DOMContentLoaded', adjustFooter);
-window.addEventListener('resize', adjustFooter);
+            console.log('Content Height: ', contentHeight, 'Viewport Height: ', viewportHeight);
 
+            if (contentHeight < viewportHeight) {
+                footer.classList.add('fixed-footer');
+            } else {
+                footer.classList.remove('fixed-footer');
+            }
+        }
 
-
-
-// function observeDOMChanges() {
-//     const observer = new MutationObserver(adjustFooter);
-//     observer.observe(document.body, {
-//         childList: true,
-//         subtree: true,
-//         attributes: false,
-//         characterData: false
-//     });
-// }
-// // ウィンドウのリサイズイベントが発生すると、フッターの位置を調整
-// window.addEventListener('resize', adjustFooter);
-
-
+        document.addEventListener('DOMContentLoaded', adjustFooter);
+        window.addEventListener('resize', adjustFooter);
     </script>
     
 </body>

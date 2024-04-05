@@ -15,10 +15,10 @@
 
   <div class="create_container">
       <div class="create_container_top">
-        <form action="{{ route('post.store') }}" method="POST">
+        <form action="{{ route('post.store') }}" method="POST" onsubmit="return validateForm()">
           @csrf
             <div class="create_input">
-                <input type="text" placeholder="タイトルを入力して下さい" name="title">
+                <input type="text" placeholder=" TODOを入力して下さい" name="title" id="todo_title">
             </div>
             <button type="submit">add</button>
         </form>
@@ -44,23 +44,26 @@
             </a>
           </div>
       </div>
-      
-      
     </div>
+
 @endsection
- 
   
+<script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+  function validateForm() {
+    var todoTitle = document.getElementById('todo_title').value;
+    if (todoTitle.trim() === '') {
+      alert('TODOを入力してください。');
+      return false; // フォーム送信をキャンセル
+    }
+    return true; // フォーム送信を許可
+  }
 
-  <script>
-      function clickEvent(event) {
-        if (!window.confirm("本当に削除しますか？")) {
-          event.preventDefault();
-        }
-      }
-  </script>
+  function clickEvent(event) {
+    if (!window.confirm("本当に削除しますか？")) {
+      event.preventDefault();
+    }
+  }
+</script>
 </body>
 </html>
-
