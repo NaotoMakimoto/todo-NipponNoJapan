@@ -34,6 +34,20 @@
 @extends('layouts.app_original')
 @section('content')
 <body>
+    <button id="playButton">Play Sound</button>
+
+<audio id="levelUpSound" src="/audio/hiro.mp4" preload="auto"></audio>
+
+<script>
+    document.getElementById('playButton').addEventListener('click', function() {
+        playLevelUpSound();
+    });
+
+    function playLevelUpSound() {
+        var audio = document.getElementById('levelUpSound');
+        audio.play();
+    }
+</script>
     <h1>次のレベルまで<a> {{ $nextLevelPoints }} </a>pts</h1>
     <!-- Progress Meter -->
     <div class="progress-bar">

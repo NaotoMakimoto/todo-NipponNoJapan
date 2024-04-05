@@ -32,6 +32,7 @@
     <img src="{{ asset('image/newlogo.png') }}" alt="Logo" class="logo" onclick="redirectToTodoIndex()">
 
     <p>
+
         {{ $user->name }}
         <span class="balloon" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">→ log out</span>
     </p>
@@ -47,5 +48,10 @@
   <footer>
 
   </footer>
+  
+
+
+
+
 </body>
 </html>
