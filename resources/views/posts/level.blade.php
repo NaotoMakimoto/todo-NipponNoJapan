@@ -36,7 +36,7 @@
 <body>
     <button id="playButton">Play Sound</button>
 
-<audio id="levelUpSound" src="/audio/hiro.mp4" preload="auto"></audio>
+<audio id="levelUpSound" src="/audio/hirohiro.mp4" preload="auto"></audio>
 
 <script>
     document.getElementById('playButton').addEventListener('click', function() {
